@@ -1,0 +1,603 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <!-- Latest compiled and minified CSS -->
+    <!-- Material Design Lite -->
+    <link rel="shortcut icon" type="image/png" href="https://scontent.fgdl3-1.fna.fbcdn.net/v/t1.0-1/p50x50/12734268_1063128193753865_1013925773745150687_n.png?oh=f38f57707ea2d7346a7f951b96bbac65&oe=5AD08BC7" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/static/content/compusoluciones.min.css" />
+    <link rel="stylesheet" href="/static/content/calendar.css" />
+    <link rel="stylesheet" href="/static/content/calendarorganizer.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+</head>
+
+<body>
+    <!-- Simple header with scrollable tabs. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+
+            <!-- Tabs -->
+            <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+                <a href="#scroll-tab-1" class="mdl-layout__tab is-active">SOM</a>
+                <a href="#scroll-tab-2" class="mdl-layout__tab">Eventos</a>
+                <a href="#scroll-tab-5" class="mdl-layout__tab">Notificaciones</a>
+                <a href="#scroll-tab-6" class="mdl-layout__tab">Cargar MDP</a>
+            </div>
+                   
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Menu</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="{{url_for('admin')}}">Home</a>
+                <a class="mdl-navigation__link" href="{{url_for('serviciosAdm')}}">Servicios</a>
+                <a class="mdl-navigation__link" href="{{url_for('cotizador')}}">Cotizador</a>
+                <a class="mdl-navigation__link" href="{{url_for('contratosAdm')}}">Contratos</a>
+                <a class="mdl-navigation__link" href="{{url_for('configuracionAdm')}}">Configuracion</a>
+                <a class="mdl-navigation__link" href="{{url_for('registra')}}">Registrar usuarios</a>
+                <a class="mdl-navigation__link" href="{{url_for('supervisa')}}">Supervisar Bot</a>
+                <a class="mdl-navigation__link" href="{{url_for('asociados')}}">Asociados</a>
+                <a class="mdl-navigation__link" href="{{url_for('proveedores')}}">Proveedores</a>
+                <a class="mdl-navigation__link" href="{{url_for('marketing')}}">Encuestas</a>
+                <a class="mdl-navigation__link" href="skype:maniz39@hotmail.com?chat">Contactar al administrador<span class="glyphicon glyphicon-sunglasses"></spanclass="glyphicon></a>
+                <a class="mdl-navigation__link" href="{{url_for('dropsession')}}" >Logout</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <section class="mdl-layout__tab-panel is-active" id="scroll-tab-1">
+                <div class="page-content">
+                <!-- Your content goes here -->
+                    <table class="mdl-data-table mdl-js-data-table" style="margin-top:20px;text-align:left">
+                        <thead>
+                            <tr>
+                                <th class="mdl-data-table__cell--non-numeric">Tipo de Cambio</th>
+                                <th>Monto</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Para Facturaci&oacute;n</td>
+                                <td></td>
+                                <td>{{tiempo}}</td>
+                            </tr>
+                            <tr>
+                                <td>Para pagos</td>
+                                <td></td>
+                                <td>{{tiempo}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="container">
+                    <div>Inidicadores SOM</div>
+                    <table class="table table-responsive table-hover table-bordered" style="margin-top:20px;text-align:left">
+                        <tbody>
+                            <tr style="background-color:#1e33d7;color:#fff;">
+                                <th>Comercial</th>
+                                <th>MDP</th>
+                                <th>Meta</th>
+                                <th>Sem 1</th>
+                                <th>Sem 2</th>
+                                <th>Sem 3</th>
+                                <th>Sem 4</th>
+                                <th>Total</th>
+                                <th>Avance</th>
+                                <th>Comentario</th>
+                                <th>Modificado</th>
+                                <th>Usuario</th>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="Oportunidades" disabled /></td>
+                                <td><input type="text" value="Al menos 15 cotizaciones generales en el mes" disabled /></td>
+                                <td><input type="number" value="15" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="Oportunidades" disabled /></td>
+                                <td><input type="text" value="Al menos 5 oportunidaes de Monitoreo o HD por mes" disabled /></td>
+                                <td><input type="number" value="5" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="Oportunidades" disabled /></td>
+                                <td><input type="text" value="3 a 1 Forecast" disabled /></td>
+                                <td><input type="number" value="3" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="MKT" disabled /></td>
+                                <td><input type="text" value="Publicaciones online y offline al menos 2 mensuales" disabled /></td>
+                                <td><input type="number" value="2" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="MKT" disabled /></td>
+                                <td><input type="text" value="11 MQL's al mes" disabled /></td>
+                                <td><input type="number" value="11" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="MKT" disabled /></td>
+                                <td><input type="text" value="9 SQL's al mes" disabled /></td>
+                                <td><input type="number" value="9" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="MKT" disabled /></td>
+                                <td><input type="text" value="Campaña por trimestre" disabled /></td>
+                                <td><input type="number" value="1" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="MKT" disabled /></td>
+                                <td><input type="text" value="Al menos 1 evento por bimestre para GD" disabled /></td>
+                                <td><input type="number" value="1" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="TD" disabled /></td>
+                                <td><input type="text" value="Assessment por mes" disabled /></td>
+                                <td><input type="number" value="1" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="TIC" disabled /></td>
+                                <td><input type="text" value="Assessment por trimestre" disabled /></td>
+                                <td><input type="number" value="1" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="Nube" disabled /></td>
+                                <td><input type="text" value="Assessment por trimestre" disabled /></td>
+                                <td><input type="number" value="1" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="DaaS" disabled /></td>
+                                <td><input type="text" value="Workshops con asociados" disabled /></td>
+                                <td><input type="number" value="1" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="HUB" disabled /></td>
+                                <td><input type="text" value="2 Asociados firmados" disabled /></td>
+                                <td><input type="number" value="2" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="HUB" disabled /></td>
+                                <td><input type="text" value="Al menos 5 oportunidades por mes" disabled /></td>
+                                <td><input type="number" value="5" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr style="background-color:#d72525;color:#fff;">
+                                <th>Operaciones</th>
+                                <th>MDP</th>
+                                <th>Meta</th>
+                                <th>Sem 1</th>
+                                <th>Sem 2</th>
+                                <th>Sem 3</th>
+                                <th>Sem 4</th>
+                                <th>Total</th>
+                                <th>Avance</th>
+                                <th>Comentario</th>
+                                <th>Modificado</th>
+                                <th>Usuario</th>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="Contratos" disabled /></td>
+                                <td><input type="text" value="100 % de servicios o proyectos con contrato o SOW" disabled /></td>
+                                <td><input type="number" value="100%" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="Procesos" disabled /></td>
+                                <td><input type="text" value="100% de los procesos de area documentados" disabled /></td>
+                                <td><input type="number" value="100%" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="Proveedores" disabled /></td>
+                                <td><input type="text" value="100% de proveedores certificados(incluye contrato)" disabled /></td>
+                                <td><input type="number" value="100%" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="Eficiencia operativa" disabled /></td>
+                                <td><input type="text" value="100% de efectividad (0 errores)" disabled /></td>
+                                <td><input type="number" value="100%" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="Encuestas de servicio" disabled /></td>
+                                <td><input type="text" value="100% de los clientes encuestados" disabled /></td>
+                                <td><input type="number" value="100%" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="Contratos" disabled /></td>
+                                <td><input type="text" value="0% de contratos penalizados" disabled /></td>
+                                <td><input type="number" value="0%" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr style="background-color:#ffd800;color:#fff;">
+                                <th>Ingenieria</th>
+                                <th>MDP</th>
+                                <th>Meta</th>
+                                <th>Sem 1</th>
+                                <th>Sem 2</th>
+                                <th>Sem 3</th>
+                                <th>Sem 4</th>
+                                <th>Total</th>
+                                <th>Avance</th>
+                                <th>Comentario</th>
+                                <th>Modificado</th>
+                                <th>Usuario</th>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="Oportunidades" disabled /></td>
+                                <td><input type="text" value="Al menos 10 cotizaciones de SP en el mes" disabled /></td>
+                                <td><input type="number" value="10" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="Certificaciones" disabled /></td>
+                                <td><input type="text" value="Al menos 3 certificaciones por mes" disabled /></td>
+                                <td><input type="number" value="3" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="Objetivo 1" disabled /></td>
+                                <td><input type="text" value="Sesiones de seguimiento a proceso de metodologia entre los equipos" disabled /></td>
+                                <td><input type="number" value="4" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="Capacitacion" disabled /></td>
+                                <td><input type="text" value="Al menos 1 competencia interna para replicar conocimientos" disabled /></td>
+                                <td><input type="number" value="3" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="Calidad SP" disabled /></td>
+                                <td><input type="text" value="0% de errores en la entrega de servicios" disabled /></td>
+                                <td><input type="number" value="0%" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="Objetivo 1" disabled /></td>
+                                <td><input type="text" value="Proyectos implementados por trimestre" disabled /></td>
+                                <td><input type="number" value="4" disabled /></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section class="mdl-layout__tab-panel" id="scroll-tab-2">
+                <div class="page-content"><!-- Your content goes here -->
+                    <script src="/static/scripts/calendarorganizer.min.js"></script>
+                    <div class="wrapper">
+                        <div id="calendarContainer"></div>
+                        <div id="organizerContainer" style="margin-left: 8px;"></div>
+                    </div>
+                    <script >
+                        "use strict";
+                        // initializing a new calendar object, that will use an html container to create itself
+                        var calendar = new Calendar("calendarContainer", // id of html container for calendar
+                            "small", // size of calendar, can be small | medium | large
+                            [
+                                "Lunes", // left most day of calendar labels
+                                3 // maximum length of the calendar labels
+                            ],
+                            [
+                                "#ffc107", // primary color
+                                "#ffa000", // primary dark color
+                                "#ffffff", // text color
+                                "#ffecb3" // text dark color
+                            ],
+                            {
+                                days: ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
+                                months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                                indicator: false
+                            }
+                        );
+                        // initializing a new organizer object, that will use an html container to create itself
+                        var organizer = new Organizer("organizerContainer", // id of html container for calendar
+                            calendar, // defining the calendar that the organizer is related to
+                            //data 
+                            // giving the organizer the static data that should be displayed
+                        );
+                    </script>
+                </div>
+            </section>
+
+            <section class="mdl-layout__tab-panel" id="scroll-tab-5">
+                <div class="page-content">
+                    <div class="container">
+                        <form action="#" style="margin-top:30px;">
+                           
+                            <div class="col-md-8">
+                                Activar notificaciones de calendario
+                            </div>
+                            <div class="col-md-4">
+                                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
+                                    <input type="checkbox" id="switch-2" class="mdl-switch__input" onclick="showNotification()">
+                                    <span class="mdl-switch__label"></span>
+                                </label>
+
+                            </div>
+                            <div class="col-md-8">
+                                Activar notificaciones de proyectos
+                            </div>
+                            <div class="col-md-4">
+                                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
+                                    <input type="checkbox" id="switch-2" class="mdl-switch__input" onclick="">
+                                    <span class="mdl-switch__label"></span>
+                                </label>
+
+                            </div>
+
+                           
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="sample3" >
+                                <label class="mdl-textfield__label" for="sample3">Text...</label>
+                            </div>
+
+                        </form>
+                        <script type="text/javascript">
+                            function showNotification() {
+                                if (window.Notification) {
+                                    Notification.requestPermission(function (status) {
+                                        console.log('Status:', status);
+                                        var n = new Notification('SOM', {
+                                            body: 'Este es el mensaje',
+                                            icon: '/static/imagenes/som.png'
+                                        });
+                                    });
+                                }
+                                    else{
+                                        alert('Tu navegador no lo soporta');
+                                    }
+                                }
+                        </script>
+                    </div>
+                </div>
+            </section>
+            <section class="mdl-layout__tab-panel" id="scroll-tab-6">
+                <div class="page-content"><!-- Your content goes here --></div>
+            </section>
+        </main>
+    </div>
+
+    {% block scripts %}
+   
+    <script src="/static/scripts/jquery-1.10.2.min.js"></script>
+    <script src="/static/scripts/bootstrap.min.js"></script>
+    <script src="/static/scripts/respond.min.js"></script>
+    {% endblock %}
+
+</body>
+</html>

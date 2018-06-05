@@ -1,0 +1,476 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <!-- Latest compiled and minified CSS -->
+    <!-- Material Design Lite -->
+    <link rel="shortcut icon" type="image/png" href="https://scontent.fgdl3-1.fna.fbcdn.net/v/t1.0-1/p50x50/12734268_1063128193753865_1013925773745150687_n.png?oh=f38f57707ea2d7346a7f951b96bbac65&oe=5AD08BC7" />
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-amber.min.css" />
+    <!--<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">-->
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/static/content/compusoluciones.min.css" />
+</head>
+
+<body>
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title"></span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation ">
+                    <a class="mdl-navigation__link" href="{{url_for('dropsession')}}">Logout</a>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Menu</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="{{ url_for('principal')}}">Home</a>
+                <a class="mdl-navigation__link" href="{{ url_for('servicios')}}">Catalogo de servicios</a>
+                <a class="mdl-navigation__link" href="{{url_for('soluciones')}}">Soluciones activas</a>
+                <a class="mdl-navigation__link" href="{{url_for('trabajo')}}">Configurador de soluciones</a>
+                <a class="mdl-navigation__link" href="{{url_for('contratos')}}">Contratos vigentes</a>
+                <a class="mdl-navigation__link" href="{{ url_for('seguimiento')}}">Seguimiento de solicitudes</a>
+                <a class="mdl-navigation__link" href="{{ url_for('encuestas')}}">Herramientas</a>
+                <a class="mdl-navigation__link" href="{{ url_for('configuracion')}}">Configuracion</a>
+                <a class="mdl-navigation__link" href="{{url_for('ayuda')}}">Ayuda</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+
+                <div class="alert alert-success container" role="alert" style="padding-top:10px">
+                    <strong>Servicios Profesionales:</strong>
+                    <br />
+                    Nuestros servicios est&aacute;n orientados a cumplir los requerimientos de nuestros socios de negocio y se basan en el uso de mejores pr&aacute;cticas de la industria, para ofrecerles soluciones de TIC que respondan a sus necesidades, contamos con un  amplia cobertura y con personal altamente calificado.
+                    <br />
+                    <strong>Servicios:</strong><br />
+                    &bull;	Infraestructura<br />
+                    &bull;	Linux<br />
+                    &bull;	Nube<br />
+                    &bull;	Microsoft<br />
+                    &bull;	Networking<br />
+                    &bull;	Administraci&oacute;n de Proyectos<br />
+                    &bull;	Consultor&iacute;a Mejores practicas<br />
+                    &bull;	Outsourcing recursos<br />
+
+                </div>
+                <!--Aqui va el contenido-->
+                <div class="container general" style="margin-bottom:200px">
+                    <br />
+                    <br />
+                    <form action="/serviciospro" method="post">
+                        <div class="form-group">
+                            <label for="servicio">Usuario Final</label>
+                            <input class="form-control" name="uf" placeholder="Usuario Final" type="text" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="servicio">Presupuesto</label>
+                            <input class="form-control" name="presupuesto" placeholder="Presupuesto estimado para el servicio" type="number" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="servicio">Autoridad</label>
+                            <input class="form-control" name="autoridad" placeholder="Autoridad para toma de desicion" type="text" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="servicio">Necesidad</label>
+                            <input class="form-control" name="necesidad" placeholder="Requerimiento" type="text" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="servicio">Fecha de cierre estimada</label>
+                            <input class="form-control" name="tiempo" type="date" value="{{tiempo}}" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="servicio">Tipo de implementaci&oacute;n</label>
+                            <select class="form-control" id="opc" onchange="selecciona()" name="cate">
+                                <option value="cat">Selecciona el tipo de implementaci&oacute;n</option>
+                                <option value="software">Software</option>
+                                <option value="hardware">Hardware</option>
+                                <option value="monitoreo">Monitoreo</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="hardware" style="display:none">
+                            <label for="servicio">Tipo de dispositivo</label>
+                            <select class="form-control" id="hard" onchange="selecciona()" name="dispo">
+                                <option value="default">Selecciona tipo de dispositivo</option>
+                                <option value="servidores">Servidores</option>
+                                <option value="almacenamiento">Almacenamiento</option>
+                                <option value="redes">Redes</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="software" style="display:none">
+                            <label for="servicio">Tipo de software</label>
+                            <select class="form-control" name="dispo">
+                                <option value="default">Seleciona el tipo de software</option>
+                                <option value="respaldo">Respaldo</option>
+                                <option value="virtualizacion">Virtualizacion</option>
+                                <option value="sistema">Sistema operativo</option>
+                                <option value="bases">Bases de datos</option>
+                            </select>
+                         </div>
+                         <div class="form-group" id="monitoreo" style="display:none">
+                            <label for="servicio">Tipo de monitoreo</label>
+                            <select class="form-control" id="monitor" name="monitor">
+                                <option value="default">Selecciona tipo de monitoreo</option>
+                                <option value="MWindows">Servicio de monitoreo y gesti&oacute;n para Windows HL/HNL</option>
+                                <option value="MLinux">Servicio de monitoreo y gesti&oacute;n para Linux HL/HNL</option>
+                                <option value="MSQL">Servicio de monitoreo y gesti&oacute;n de DB SQL</option>
+                                <option value="MMYSQL">Servicio de monitoreo y gesti&oacute;n de DB MYSQL</option>
+                                <option value="SS">Servicio de seguridad de protecci&oacute;n de intrusos por servidor.</option>
+                                <option value="MFirewallB">Servicio de monitoreo y gesti&oacute;n de  seguridad para Firewall (Anybrand) basico.</option>
+                                <option value="MFirewallI">Servicio de monitoreo y gesti&oacute;n de seguridad para Firewall (Anybrand) intermedio.</option>
+                                <option value="MFirewallA">Servicio de monitoreo y gesti&oacute;n de seguridad para Firewall (Anybrand) avanzado.</option>
+                            </select>
+                        </div>
+                        <!--Servidores-->
+                        <div class="form-group" id="servicios" style="display:none">
+                            <label for="servicio">Tipo de servicio</label>
+                            <select class="form-control" id="serv" onchange="selecciona()" name="servicio">
+                                <option value="default">Seleciona el tipo de servicio</option>
+                                <option value="instalacionF">Instalaci&oacute;n F&iacute;sica</option>
+                                <option value="startup">Startup</option>
+                                <option value="instalacionO">Instalaci&oacute;n de Sistema Operativo</option> 
+                                
+                            </select>
+                        </div>
+                        <!--Storage-->
+                        <div class="form-group" id="serviciosS" style="display:none">
+                            <label for="servicio">Tipo de servicio</label>
+                            <select class="form-control" id="servS" onchange="selecciona()" name="servicio">
+                                <option value="default">Seleciona el tipo de servicio</option>
+                                <option value="instalacionS">Instalaci&oacute;n F&iacute;sica</option>
+                                <option value="startupStorage">Startup</option>
+                               
+                            </select>
+                        </div>
+                        <!--Redes-->
+                        <div class="form-group" id="red" style="display:none">
+                            <label for="servicio">Tipo de servicio</label>
+                            <select class="form-control" id="redes" onchange="selecciona()" name="servicio">
+                                <option value="default">Seleciona el tipo de servicio</option>
+                                <option value="swi">Switches</option>
+                                <option value="wifi">Wireless</option>
+                            </select>
+                        </div>
+                        <!--Servidores-->
+                        <div class="form-group" id="basico" style="display:none">
+                            <label for="servicio">Alcance</label><br />
+                            &bull; Desempaquetado/Armado de componentes.<br />
+                            &bull; Montaje en rack.<br />
+                            &bull; Cableado, energizado y encendido.<br />
+                            <br />
+                            <div class="col-md-12" style="text-align:right">
+                                <b style="color:#0939a0">$4,000.00</b><b>MXN + IVA</b>
+                                <br /><br />
+                                <button class="btn btn-danger" type="submit">Solicitar Servicio</button>
+                            </div>
+                        </div>
+                       
+                        <div class="form-group" id="startup" style="display:none">
+                            <label for="servicio">Alcance</label><br />
+                            &bull; Configuración de modulo de administración<br />
+                            &bull; Configuraciones de red<br />
+                            &bull; Pruebas de conexión<br />
+                            &bull; Revisión de componentes<br />
+                            &bull; Actualización de firmwares (si es necesario)<br />
+                            &bull; Creación de RAID"<br />
+                            <br />
+                            <div class="col-md-12" style="text-align:right">
+                                <b style="color:#0939a0">$6,000.00</b><b>MXN + IVA</b>
+                                <br /><br />
+                                <button class="btn btn-danger" type="submit">Solicitar Servicio</button>
+                            </div>
+                        </div>
+                        <div class="form-group" id="sistema" style="display:none">
+                            <label for="servicio">Alcance</label><br />
+                           &bull; Instalación básica de Sistema Operativo<br />
+                            &bull; Montaje de ISO<br />
+                            &bull; Configuración de usuarios
+                            de administración y particiones<br />
+                            &bull; Configuraciones de red<br />
+                            &bull; Configuración de Hostname<br />
+                            &bull; Instalación de licenciamiento<br />
+                            <b>Nota:</b><br />
+                            <b>Se considera Sistema Operativo Windows Server o Red Hat Linux Enterprise</b>
+                            <br />
+                            <div class="col-md-12" style="text-align:right">
+                                <b style="color:#0939a0">$3,000.00</b><b>MXN + IVA</b>
+                                <br /><br />
+                                <button class="btn btn-danger" type="submit">Solicitar Servicio</button>
+                            </div>
+                        </div>
+                         <!--Storage-->
+                        <div class="form-group" id="fisicaS" style="display:none">
+                            <label for="servicio">Alcance</label><br />
+                            &bull; Desempaquetado/Armado de componentes.<br />
+                            &bull; Montaje en rack.<br />
+                            &bull; Cableado, energizado y encendido.<br />
+                            <br />
+                            <div class="col-md-12" style="text-align:right">
+                                <b style="color:#0939a0">$4,000.00</b><b>MXN + IVA</b>
+                                <br /><br />
+                                <button class="btn btn-danger" type="submit">Solicitar Servicio</button>
+                            </div>
+                        </div>
+                        <div class="form-group" id="startupStor" style="display:none">
+                            <label for="servicio">Alcance</label><br />
+                            &bull; Configuración de modulo de administración<br />
+                            &bull; Configuraciones de red<br />
+                            &bull; Pruebas de conexión<br />
+                            &bull; Revisión de componentes<br />
+                            &bull; Actualización de firmwares (si es necesario)<br />
+                            &bull; Aprovisionamiento de almacenamiento<br />
+                            &bull; Presentación de LUNS a hosts (SAN, NAS, DAS)<br />
+                            <br />
+                            <div class="col-md-12" style="text-align:right">
+                                <b style="color:#0939a0">$10,000.00</b><b>MXN + IVA</b>
+                                <br /><br />
+                                <button class="btn btn-danger" type="submit">Solicitar Servicio</button>
+                            </div>
+
+                        </div>
+                        <!--Red-->
+                        <div class="form-group" id="switch" style="display:none">
+                            <label for="servicio">Alcance</label><br />
+                            &bull; Desempaquetado/Armado de componentes<br />
+                            &bull; Montaje en rack<br />
+                            &bull; Cableado, energizado y encendido<br />
+                            &bull; Actualización de software.<br />
+                            &bull; Servicios de Capa 2 básica ruteo estático<br />
+                            &bull; Interfaz VLAN                                  <br />                                                                                                                     •Replicación de VLANs (Acceso y troncales)
+                            &bull; VLAN de Voz y QoS básico<br />
+                            &bull; Habilitamiento de PoE para puertos que lo requieran y enlaces agregados LACP<br />
+                            &bull; Transferencia de conocimientos<br />
+
+                            <b>
+                                Nota:<br />
+                                No incluye montado de cableado estructurado
+                            </b>
+                            <br />
+                            <div class="col-md-12" style="text-align:right">
+                                <b style="color:#0939a0">$11,000.00</b><b>MXN + IVA</b>
+                                <br /><br />
+                                <button class="btn btn-danger" type="submit">Solicitar Servicio</button>
+                            </div>
+
+                        </div>
+                        <div class="form-group" id="wireless" style="display:none">
+                            <label for="servicio">Alcance</label><br />
+                            &bull; deSSIDs<br />
+                            &bull; Configuración de politicas y reglas<br />
+                            &bull; Alta de equipos en Aruba Central<br />
+                            &bull; Configuración de autenticidad con AD<br />
+                            <b>
+                                Nota:<br />
+                                No se considera cableado estructurado ni montaje de bases de equipos
+                            </b>
+                            <br />
+                            <div class="col-md-12" style="text-align:right">
+                                <b style="color:#0939a0">$5,000.00</b><b>MXN + IVA</b>
+                                <br /><br />
+                                <button class="btn btn-danger" type="submit">Solicitar Servicio</button>
+                            </div>
+                        </div>
+                        <!--
+                        <div class="form-group">
+                            <label for="servicio">Alcance</label><br />
+                            &bull; Importación de VM HP StoreVirtual VSA.<br />
+                            &bull; Configuración de IP de administración.<br />
+                            &bull; Instalación de Cliente CMC.<br />
+                            &bull; Creación de Grupo de Administración.<br />
+                            &bull; Creación de Cluster.<br />
+                            &bull; Configuración de IPs Virtuales.<br />
+                            &bull; Creación de Volúmenes."<br />
+                        </div>
+                        <div class="form-group">
+                            <label for="servicio">Alcance</label><br />
+                            &bull; Implementación de hypervisor<br />
+                            &bull; Configuración de usuario root.<br />
+                            &bull; Configuración de servicios de red para el host.<br />
+                            &bull; Configuración de HA<br />
+                            &bull; Activación de licencia.<br />
+                        </div>
+                        <div class="form-group">
+                            <label for="servicio">Alcance</label><br />
+                            &bull; Levantamiento de consola de administración<br />
+                            &bull; Configuración de parametros<br />
+                            &bull; Alta de hosts<br />
+                            &bull; Configuración de usuarios<br />
+                            &bull; Activación de licencia.<br />
+                        </div>
+                        <div style="text-align:right">$</div>-->
+                    <!--Monitoreo-->
+                    <div class="form-group" id="mw" style="display:none">
+                            <label for="servicio">Alcance</label><br />
+                                *
+                            <br />
+                            <div class="col-md-12" style="text-align:right">
+                                <b style="color:#0939a0">$1,588.57</b><b> MXN + IVA</b>
+                                <br /><br />
+                                <button class="btn btn-danger" type="submit">Solicitar Servicio</button>
+                            </div>
+                        </div>
+                
+                    <div class="form-group" id="ml" style="display:none">
+                            <label for="servicio">Alcance</label><br />
+                                *
+                            <br />
+                            <div class="col-md-12" style="text-align:right">
+                                <b style="color:#0939a0">$1,588.57</b><b> MXN + IVA</b>
+                                <br /><br />
+                                <button class="btn btn-danger" type="submit">Solicitar Servicio</button>
+                            </div>
+                        </div>
+
+                    <div class="form-group" id="sp" style="display:none">
+                            <label for="servicio">Alcance</label><br />
+                                *
+                            <br />
+                            <div class="col-md-12" style="text-align:right">
+                                <b style="color:#0939a0">$1,237.19</b><b> MXN + IVA</b>
+                                <br /><br />
+                                <button class="btn btn-danger" type="submit">Solicitar Servicio</button>
+                            </div>
+                        </div>
+                <div class="form-group" id="msql" style="display:none">
+                            <label for="servicio">Alcance</label><br />
+                                *
+                            <br />
+                            <div class="col-md-12" style="text-align:right">
+                                <b style="color:#0939a0">$2,428.19</b><b> MXN + IVA</b>
+                                <br /><br />
+                                <button class="btn btn-danger" type="submit">Solicitar Servicio</button>
+                            </div>
+                        </div>
+
+                      <div class="form-group" id="mmysql" style="display:none">
+                            <label for="servicio">Alcance</label><br />
+                                *
+                            <br />
+                            <div class="col-md-12" style="text-align:right">
+                                <b style="color:#0939a0">$2,720.45</b><b> MXN + IVA</b>
+                                <br /><br />
+                                <button class="btn btn-danger" type="submit">Solicitar Servicio</button>
+                            </div>
+                        </div>
+
+                    <div class="form-group" id="mfb" style="display:none">
+                            <label for="servicio">Alcance</label><br />
+                                *
+                            <br />
+                            <div class="col-md-12" style="text-align:right">
+                                <b style="color:#0939a0">$1,745.45</b><b> MXN + IVA</b>
+                                <br /><br />
+                                <button class="btn btn-danger" type="submit">Solicitar Servicio</button>
+                            </div>
+                        </div>
+
+                    <div class="form-group" id="mw" style="display:none">
+                            <label for="servicio">Alcance</label><br />
+                                *
+                            <br />
+                            <div class="col-md-12" style="text-align:right">
+                                <b style="color:#0939a0">$3,745.65</b><b> MXN + IVA</b>
+                                <br /><br />
+                                <button class="btn btn-danger" type="submit">Solicitar Servicio</button>
+                            </div>
+                        </div>
+
+                 <div class="form-group" id="mw" style="display:none">
+                            <label for="servicio">Alcance</label><br />
+                                *
+                            <br />
+                            <div class="col-md-12" style="text-align:right">
+                                <b style="color:#0939a0">$6,663.79</b><b> MXN + IVA</b>
+                                <br /><br />
+                                <button class="btn btn-danger" type="submit">Solicitar Servicio</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+                <!--Aqui acaba-->
+
+              
+
+                <!--Aqui va footer-->
+                <footer class="mdl-mini-footer" style="background-color:#89898C;color:#fff">
+                    <div class="mdl-mini-footer__left-section">
+                        <div class="mdl-logo"><a href="https://www.compusoluciones.com/"><img src="/static/imagenes/logo2.svg" style="width:150px;height:40px;"></a></div>
+                        <div class="mdl-mini-footer__left-section">
+                            <ul class="mdl-mini-footer__link-list">
+                                <li><a href="#">Derechos reservados CompuSoluciones {{year}}</a></li>
+                            </ul>
+                        </div>
+                        <div class="mdl-mini-footer__left-section">
+                            <ul class="mdl-mini-footer__link-list">
+                                <li>
+                                    <a target="_blank" href="https://www.facebook.com/CompuSolucionesyAsociados" style="color:#fff">
+                                        <i class="fa fa-facebook circle facebook" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://twitter.com/CompuSoluciones" style="color:#fff">
+                                        <i class="fa fa-twitter circle twitter  " aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.linkedin.com/company-beta/141999/" style="color:#fff">
+                                        <i class="fa fa-linkedin circle linkedin" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.youtube.com/user/CanalCompuSoluciones" style="color:#fff">
+                                        <i class="fa fa-youtube-play circle youtube" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mdl-mini-footer__left-section">
+                            <ul class="mdl-mini-footer__link-list">
+                                <li><a href="https://www.compusoluciones.com/aviso-de-privacidad/">Aviso de privacidad</a></li>
+                                <li><a href="{{url_for('altaP')}}">Quiero ser proveedor SOM</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+        </main>
+    </div>
+
+   
+    <script src="/static/scripts/changes.min.js"></script>
+    <script src="/static/scripts/respond.min.js"></script>
+   
+    {% block scripts %}{% endblock %}
+    <!--<script src="/static/scripts/bootstrap.js"></script>
+
+    <script src="/static/scripts/dashboard.js"></script>
+    <script src="/static/scripts/jquery-1.10.2.js"></script>-->
+    <!---->
+
+</body>
+</html>
+
+
+
+
+

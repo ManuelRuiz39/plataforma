@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <!-- Material Design Lite -->
+    <link rel="shortcut icon" type="image/png" href="https://scontent.fgdl3-1.fna.fbcdn.net/v/t1.0-1/p50x50/12734268_1063128193753865_1013925773745150687_n.png?oh=f38f57707ea2d7346a7f951b96bbac65&oe=5AD08BC7" />
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-amber.min.css" />
+    <!--<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">-->
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/content/compusoluciones.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body>
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title"><img src="/static/imagenes/logo.png" width="275" height="68" /></span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation ">
+                    <a class="mdl-navigation__link" href="{{url_for('dropsession')}}">Logout</a>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Menu</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="{{ url_for('principal')}}">Home</a>
+                <a class="mdl-navigation__link" href="{{ url_for('servicios')}}">Catalogo de servicios</a>
+                <a class="mdl-navigation__link" href="{{url_for('soluciones')}}">Soluciones activas</a>
+                <a class="mdl-navigation__link" href="{{url_for('trabajo')}}">Configurador de soluciones</a>
+                <a class="mdl-navigation__link" href="{{url_for('contratos')}}">Contratos vigentes</a>
+                <a class="mdl-navigation__link" href="{{ url_for('seguimiento')}}">Seguimiento de solicitudes</a>
+                <a class="mdl-navigation__link" href="{{ url_for('encuestas')}}">Herramientas</a>
+                <a class="mdl-navigation__link" href="{{ url_for('configuracion')}}">Configuracion</a>
+                <a class="mdl-navigation__link" href="{{url_for('ayuda')}}">Ayuda</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+
+                <div class="alert alert-success container" role="alert" style="padding-top:30px">
+                    <strong> Administrados de Impresi&oacute;n:</strong>
+                    <br />
+                    Ofrecemos flexibilidad y ayudamos a la reducci&oacute;n de costos proporcionando alternativas digitales.<br />
+                    Nuestros servicios:<br />
+
+                    &bull;	Contamos con cobertura a nivel nacional.<br />
+                    &bull;	Implementamos un control de costos que permita dar mejor visibilidad de Qui&eacute;n y Cu&aacute;nto imprimen.<br />
+                    &bull;	Contamos con niveles de servicio con alertamiento proactivo.<br />
+                    &bull;	Garantizamos el borrado de informaci&oacute;n confidencial del disco duro de la impresora para evitar fugas de informaci&oacute;n.
+
+
+                </div>
+                <div class="container" style="margin-bottom:200px;">
+
+                    <form action="/impresion" method="post">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nombre de la dependencia de Gobierno y/o Razón Social de la empresa.</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" name="razon" placeholder="Nombre de la dependencia de Gobierno y/o Razón Social de la empresa.">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Ubicacion de la misma</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" name="ubicacion" placeholder="Ubicacion de la dependepncia">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Ubicación de los diferentes inmuebles de la dependencia de Gobierno y/o Razón Social de la empresa en la cual se instalaran los equipos (en caso de que aplique).</label>
+                           <textarea class="form-control" name="ubicaciones"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tipo de servicio solicitado, ya sea solo impresión o que incluya impresión, copiado escaneo y fax.</label>
+                            <input type="text" class="form-control" name="tiposer" id="exampleInputEmail1" placeholder="Tipo de servicio">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Cantidad de equipos actualmente instalados (en caso de que aplique).</label>
+                            <input type="number" class="form-control" name="cantidad" id="exampleInputEmail1" placeholder="Numero de equipos en caso de tener actualmete">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Marca de equipos actualmente instalados (en caso de que aplique).</label>
+                            <select  class="form-control" name="marca">
+                                <option value="hp">HP</option>
+                                <option value="samsung">SAMSUNG</option>
+                                <option value="brother">BROTHER</option>
+                                <option value="canon">CANON</option>
+                                <option value="epson">EPSON</option>
+                                <option value="dell">DELL</option>
+                                <option value="panasonic">PANASONIC</option>
+                                <option value="lexmark">LEXMARK</option>
+                                <option value="toshiba">TOSHIBA</option>
+                                <option value="kyocera">KYOCERA</option>
+                                <option value="ricoh">RICOH</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Cantidad de usuarios.</label>
+                            <input type="number" class="form-control" name="usuarios" id="exampleInputEmail1" placeholder="Cantidad de usuarios">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nivel de disponibilidad o SLA’s que está buscando el cliente</label>
+                            <input type="text" class="form-control" name="disponibilidad" id="exampleInputEmail1" placeholder="Nivel de SLA's'">
+                        </div>
+                        <!--Pendiente con napo 8 a 11-->
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Volumen de impresi&oacute;n mensual</label>
+                            <input type="number" name="vim" placeholder="Volumen mensual de impresion" class="form-control" />
+                           
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Volumen de copias mensual</label>
+                            <input type="number" name="vcm" placeholder="Volumen mensual de copias" class="form-control" />
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Volumen de escaneo mensual</label>
+                            <input type="number" name="vie" placeholder="Volumen mensual de escaneo" class="form-control" />
+
+                        </div>
+
+                        <div class="form-group"> 
+                        <label for="exampleInputEmail1">Impresion y Copias</label>
+                        <select name="color" class="form-control">
+                            <option value="byn">Blanco y Negro</option>
+                            <option value="color">Color</option>
+                        </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tiempo mínimo y máximo en meses que solicitan que se preste este servicio.</label> 
+                            <select name="tiempoServicio" class="form-control">
+                                <option value="1 a 12">1 a 12 meses</option>
+                                <option value="1 a 24">1 a 24 meses</option>
+                                <option value="1 a 36">1 a 36 meses</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Cuentan con algún software de administración en los equipos actualmente instalados, o bien requieren que se les instale algún software de administración para el manejo de su copias, impresiones y escaneos.</label> </label>
+                            <input type="text" class="form-control" name="softwareAdm" id="exampleInputEmail1" placeholder="Software de administracion con el que se cuenta o bien requiere alguno">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Cantidad de equipos con que cuentan que impriman y copien en color  (en caso de que aplique).</label> 
+                            <select class="form-control" name="equipoColor">
+                                {%for x in range(0,100)%}
+                                <option value="{{x}}">{{x}}</option>
+                                {% endfor %}
+                            </select>
+                            
+                        </div>
+                        <div class="col-md-12" style="text-align:right">
+                            <br />
+                            <button type="submit" class="btn btn-success">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+                <!--Aqui va el contenido-->
+                <!--Aqui acaba-->
+             
+
+                <!--Aqui va footer-->
+                <footer class="mdl-mini-footer" style="background-color:#89898C;color:#fff">
+                    <div class="mdl-mini-footer__left-section">
+                        <div class="mdl-logo"><a href="https://www.compusoluciones.com/"><img src="/static/imagenes/logo2.svg" style="width:150px;height:40px;"></a></div>
+                        <div class="mdl-mini-footer__left-section">
+                            <ul class="mdl-mini-footer__link-list">
+                                <li><a href="#">Derechos reservados CompuSoluciones {{year}}</a></li>
+                            </ul>
+                        </div>
+                        <div class="mdl-mini-footer__left-section">
+                            <ul class="mdl-mini-footer__link-list">
+                                <li>
+                                    <a target="_blank" href="https://www.facebook.com/CompuSolucionesyAsociados" style="color:#fff">
+                                        <i class="fa fa-facebook circle facebook" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://twitter.com/CompuSoluciones" style="color:#fff">
+                                        <i class="fa fa-twitter circle twitter  " aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.linkedin.com/company-beta/141999/" style="color:#fff">
+                                        <i class="fa fa-linkedin circle linkedin" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.youtube.com/user/CanalCompuSoluciones" style="color:#fff">
+                                        <i class="fa fa-youtube-play circle youtube" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mdl-mini-footer__left-section">
+                            <ul class="mdl-mini-footer__link-list">
+                                <li><a href="https://www.compusoluciones.com/aviso-de-privacidad/">Aviso de privacidad</a></li>
+                                <li><a href="{{url_for('altaP')}}">Quiero ser proveedor SOM</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+        </main>
+    </div>
+
+
+
+    <script src="/static/scripts/respond.min.js"></script>
+    {% block scripts %}{% endblock %}
+    <!--<script src="/static/scripts/bootstrap.js"></script>
+
+    <script src="/static/scripts/dashboard.js"></script>
+    <script src="/static/scripts/jquery-1.10.2.js"></script>-->
+    <!---->
+
+</body>
+</html>
+
+
+
+
+

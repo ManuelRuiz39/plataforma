@@ -1,0 +1,278 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <!-- Latest compiled and minified CSS -->
+    <!-- Material Design Lite -->
+    <link rel="shortcut icon" type="image/png" href="https://scontent.fgdl3-1.fna.fbcdn.net/v/t1.0-1/p50x50/12734268_1063128193753865_1013925773745150687_n.png?oh=f38f57707ea2d7346a7f951b96bbac65&oe=5AD08BC7" />
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-amber.min.css" />
+    <!--<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">-->
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/content/compusoluciones.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body>
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title"></span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation ">
+                    <a class="mdl-navigation__link" href="{{url_for('dropsession')}}">Logout</a>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Menu</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="{{ url_for('principal')}}">Home</a>
+                <a class="mdl-navigation__link" href="{{ url_for('servicios')}}">Catalogo de servicios</a>
+                <a class="mdl-navigation__link" href="{{url_for('soluciones')}}">Soluciones activas</a>
+                <a class="mdl-navigation__link" href="{{url_for('trabajo')}}">Configurador de soluciones</a>
+                <a class="mdl-navigation__link" href="{{url_for('contratos')}}">Contratos vigentes</a>
+                <a class="mdl-navigation__link" href="{{ url_for('seguimiento')}}">Seguimiento de solicitudes</a>
+                <a class="mdl-navigation__link" href="{{ url_for('encuestas')}}">Herramientas</a>
+                <a class="mdl-navigation__link" href="{{ url_for('configuracion')}}">Configuracion</a>
+                <a class="mdl-navigation__link" href="{{url_for('ayuda')}}">Ayuda</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                
+
+                    <div class="alert alert-success container" role="alert" style="padding-top:30px">
+                        <strong> DaaS:</strong>
+                        <br />
+
+                    </div>
+                    <div class="container">
+                        <form action="/daasE" method="post">
+                               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" name="uf">
+                            <label class="mdl-textfield__label" for="sample3">Usuario final</label>
+                        </div>
+                        <br />
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" name="presupuesto">
+                            <label class="mdl-textfield__label" for="sample4">Presupuesto estimado para el servicio</label>
+                            <span class="mdl-textfield__error">¡Debe ser un valor numerico!</span>
+                        </div>
+                        <br />
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" name="autoridad">
+                            <label class="mdl-textfield__label" for="sample3">Autoridad para toma de desici&oacute;n</label>
+                        </div>
+                        <br />
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" name="necesidad">
+                            <label class="mdl-textfield__label" for="sample3">Requerimiento</label>
+                        </div>
+                        <br />
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="date" name="tiempo" value="{{tiempo}}">
+                            <label class="mdl-textfield__label" for="sample3">Fecha de cierre estimada</label>
+                        </div>
+                        
+                       
+                        <br /><br />
+                        <hr />
+
+                            <div class="col-md-12 bg-primary" style="text-align:center">
+                                BUNDLES
+                            </div>
+                            <div class="col-md-6 bg-info">
+                                Descripci&oacute;n del equipo
+                            </div>
+                            <div class="col-md-6 bg-info">
+                                Servicios incluidos
+                            </div>
+                            <div class="col-md-6">
+                                1ZS16LT/ HP ProBook 440 G3,Intel® Core™ i3-6006U ,W10P6,No,WLAN I 8260 ac 2x2 +BT 4.2 LE WW,
+                                8GB (1x8GB) 2133 DDR4,HDD 1TB 5400RPM,LCD 14 LED HD SVA AG f/CAM 2Ant,No ODD,1/1/0<br />
+                               <a href="/static/documents/1ZS16LT.pdf"><i class="fa fa-file-pdf-o fa-2x" aria-hidden="true" style="color:#ff0000;"></i></a> <b>Ficha Tecnica</b>
+                                
+                            </div>
+                            <div class="col-md-6">
+                                &bull; Instalaci&oacute;n y puesta en punto.<br />
+                                &bull; Migracion de informaci&oacute;n<br />
+                                &bull; Proteccion de datos<br />
+                                &bull; Mesa de ayuda (servicio basico)<br />
+                                &bull; Mantenimiento preventivo y Borrado seguro de Informacion.<br />
+                            </div>
+                            <div class="col-md-12 bg-primary" style="text-align:center">
+                                COSTO MENSUAL POR EQUIPO A PARTIR DE 50 PIEZAS
+                            </div>
+                            <div class="col-md-4" style="background-color:#b5b8bc">
+                                Meses
+                            </div>
+                            <div class="col-md-2">
+                                12
+                            </div>
+                            <div class="col-md-2">
+                                24
+                            </div>
+                            <div class="col-md-2">
+                                36
+                            </div>
+                            <div class="col-md-2">
+                                Solicitar
+                            </div>
+                            <div class="col-md-4" style="background-color:#b5b8bc;height:22.3667px;">
+                                Costo mensual 50 equipos
+                            </div>
+                            <div class="col-md-2">
+                                $1,799.60
+                            </div>
+                            <div class="col-md-2">
+                                $1,115.17
+                            </div>
+                            <div class="col-md-2">
+                                $888.11
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" name="equipo50" id="e50" class="btn btn-success btn-xs">Solicitar</button>
+                            </div>
+                            <div class="col-md-4" style="background-color:#b5b8bc;height:22.3667px;">
+                            Costo mensual 100 equipos
+                            </div>
+                            <div class="col-md-2">
+                                $1,761.81
+                            </div>
+                            <div class="col-md-2">
+                                $1,090.86
+                            </div>
+                            <div class="col-md-2">
+                                $868.59
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" name="equipo100" id="e100" class="btn btn-success btn-xs" >Solicitar</button>
+                            </div>
+       
+                            <div class="col-md-4" style="background-color:#b5b8bc;height:22.3667px;">
+                                Costo mensual 250 equipos
+                            </div>
+                            <div class="col-md-2">
+                                $1,746.38
+                            </div>
+                            <div class="col-md-2">
+                                $1,080.48
+                            </div>
+                            <div class="col-md-2">
+                                $859.87
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" name="equipo250" id="e250" class="btn btn-success btn-xs">Solicitar</button>
+                            </div>
+                            <div class="col-md-4" style="background-color:#b5b8bc;height:22.3667px;">
+                                Costo mensual 500 equipos
+                            </div>
+                            <div class="col-md-2">
+                                $1,732.15
+                            </div>
+                            <div class="col-md-2">
+                                $1,068.08
+                            </div>
+                            <div class="col-md-2">
+                                $849.83
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" name="equipo500" id="e500" class="btn btn-success btn-xs">Solicitar</button>
+                            </div>
+                            <div class="col-md-12 bg-danger">
+                                <b>Nota:</b> Al finalizar el arrendamiento se paga aproximadamente entre un 1% para tener la posecion total de los equipos.
+                            </div>
+                </div>
+                <br />
+                <div class="container" style="text-align:right;margin-bottom:200px;">
+                    <a href="#"><button class="btn btn-warning">Personalizar</button></a> 
+                   
+                </div>
+                </form>
+               
+                <!--Aqui va el contenido-->
+                <!--Aqui acaba-->
+               
+
+                <!--Aqui va footer-->
+                <footer class="mdl-mini-footer" style="background-color:#89898C;color:#fff">
+                    <div class="mdl-mini-footer__left-section">
+                        <div class="mdl-logo"><a href="https://www.compusoluciones.com/"><img src="/static/imagenes/logo2.svg" style="width:150px;height:40px;"></a></div>
+                        <div class="mdl-mini-footer__left-section">
+                            <ul class="mdl-mini-footer__link-list">
+                                <li><a href="#">Derechos reservados CompuSoluciones {{year}}</a></li>
+                            </ul>
+                        </div>
+                        <div class="mdl-mini-footer__left-section">
+                            <ul class="mdl-mini-footer__link-list">
+                                <li>
+                                    <a target="_blank" href="https://www.facebook.com/CompuSolucionesyAsociados" style="color:#fff">
+                                        <i class="fa fa-facebook circle facebook" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://twitter.com/CompuSoluciones" style="color:#fff">
+                                        <i class="fa fa-twitter circle twitter  " aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.linkedin.com/company-beta/141999/" style="color:#fff">
+                                        <i class="fa fa-linkedin circle linkedin" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.youtube.com/user/CanalCompuSoluciones" style="color:#fff">
+                                        <i class="fa fa-youtube-play circle youtube" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mdl-mini-footer__left-section">
+                            <ul class="mdl-mini-footer__link-list">
+                                <li><a href="https://www.compusoluciones.com/aviso-de-privacidad/">Aviso de privacidad</a></li>
+                                <li><a href="{{url_for('altaP')}}">Quiero ser proveedor SOM</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+        </main>
+    </div>
+
+
+
+    <script src="/static/scripts/respond.js"></script>
+    <script src="/static/scripts/draas.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+    {% block scripts %}{% endblock %}
+    <!--<script src="/static/scripts/bootstrap.js"></script>
+
+    <script src="/static/scripts/dashboard.js"></script>
+    <script src="/static/scripts/jquery-1.10.2.js"></script>-->
+    <!---->
+
+</body>
+</html>
+
+
+
+
+

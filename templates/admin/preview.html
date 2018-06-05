@@ -1,0 +1,240 @@
+{% extends "/admin/layout.html" %}
+
+{% block content %}
+<main class="mdl-layout__content">
+    <div class="page-content">
+        <div class="container">
+            <br /><br /><br /><br />
+            <div class="col-md-3">FECHA DE SOLICITUD</div>
+            <div class="col-md-3">{{fecha}}</div>
+            <br />
+            <div class="col-md-3">FOLIO:</div>
+            <div class="col-md-3">{{folio}}</div><br />
+            <div class="col-md-3">{{distribuidor}}</div>
+            <div class="col-md-3">{{comp}}</div><br />
+            <div class="col-md-3">ELABORO</div>
+            <div class="col-md-3">{{nom}} {{lastname}}</div><br />
+
+            
+            <br /><br />
+            <table class="table table-bordered table-hover table-sortable">
+                <thead class="bg-primary">
+                    <tr>
+                        <th class="text-center">
+                            Articulo
+                        </th>
+                        <th class="text-center">
+                            Servicio
+                        </th>
+                        <th class="text-center">
+                            Descripci&oacute;n
+                        </th>
+                        <th class="text-center">
+                            Alcance
+                        </th>
+                        <th class="text-center">
+                            Precio Unitario
+                        </th>
+                        <th class="text-center">
+                            Importe Total
+                        </th>
+                        
+                    </tr>
+                </thead>
+                     <tbody>
+                   {{servicios}}
+                    <tr>
+                      
+                    </tr>
+                    
+                </tbody>
+            </table>
+          
+
+            <br /><br />
+            <!--Contactos-->
+            <div class="col-md-2 bg-primary">
+                Contactos
+            </div>
+            <div class="col-md-2">
+                Stephany Altamirano
+            </div>
+            <div class="col-md-3">
+                saltamir@compusoluciones.com
+            </div>
+            <div class="col-md-2">
+                Tel. (55) 5000-7895
+            </div><br />
+            <!--Terminos y condiciones-->
+            <div class="container" style="color: #ffffff; background-color: #F1A21E; text-align:center;">TERMINOS Y CONDICIONES</div>
+            <div class="col-md-4"><b>Entregables</b></div>
+            <div class="col-md-8">
+                Se documentar&aacute;n los servicios solicitados, incluyendo las configuraciones finales de los equipos interconectados,
+                as&iacute; como tambi&eacute;n los diagramas de conexi&oacute;n.<br />
+                &bull; Memoria T&eacute;cnica de la configuraci&oacute;n realizada.<br />
+                &bull; Hoja de Servicio de las actividades realizadas.
+            </div>
+            <div class="col-md-4"><b>Tiempos de entrega aproximados</b></div>
+            <div class="col-md-8">
+                La Disponibilidad es la que se acuerde en conjunto con el cliente.<br />
+                <b>Nota:</b> el tiempo estimado puede variar dependiendo de la logística, entrega de equipo, disponibilidad de uf y condiciones
+                de las instalaciones.
+            </div>
+            <div class="col-md-4"><b>Restricciones comerciales y generales</b></div>
+            <div class="col-md-8">
+                1. Precios en moneda nacional.<br />
+                2. Precios incluyen IVA.<br />
+                3. Propuesta válida hasta 10 días después de su fecha de emisión.<br />
+                4. Se requiere que  El cliente  de una firma de aceptación en la factura, la propuesta o que genere una orden de compra o genere y firme un contrato de servicios para iniciar el proyecto.<br />
+                5. El pago del servicio es del 100% por adelantado (solo en casos de no contar con LC, con deuda a la línea o clientes nuevos sin LC).<br />
+                5.1 Una vez facturado el servicio no se ejecutarán reembolsos, ni notas de crédito.<br />
+                6. Si existiera un CC tendrá un impacto en el tema de costos.<br />
+                7. Cualquier modificación al alcance original acordado y firmado tiene un costo adicional.<br />
+                8. El precio no incluye la compra de ningún tipo de licencia de Software ni la compra de Hardware.<br />
+                9. Tiempo de entrega a partir del proceso de ODC.<br />
+                10. En caso de que los servicios de Consultoría sean fuera de CDMX o GDL, se cobraran los viáticos respectivos basados en las políticas.<br />
+                11. Se requiere contar con la infraestructura validada.<br />
+                12. CompuSoluciones no se hace responsable por arquitecturas no validadas por Servicios Profesionales.<br />
+                13. CompuSoluciones no se hace responsable de una mala post configuración de la solución.<br />
+                14. Se deberá de contar sin excepción con todos los requerimientos solicitados, de lo contrario las actividades no se podrán ejecutar parcial o totalmente.<br />
+                15. Si el tiempo del servicio excede del tiempo establecido y sea por factores ajenos a CompuSoluciones, se realizará un ajuste en el precio del alcance.<br />
+                16. Si las ventanas de mantenimiento son canceladas estando el ingeniero en sitio contara como tiempo de servicio establecido en el alcance.<br />
+                <b>ODC: Orden de Compra</b><br />
+                <b>LC: Línea de Crédito</b><br />
+                <b>CC: Control de Cambios</b><br />
+            </div>
+            <div class="col-md-4"><b>L&iacute;mites de los entregables</b></div>
+            <div class="col-md-8">
+                A continuaci&oacute;n, se establecen los l&iacute;mites de los entregables de los servicios que se van a realizar, es importante que   revisar cada uno de ellos para que se cumpla con éxito el proyecto.<br />
+                &bull; <b>CompuSoluciones</b> no se hace responsable si no se cuenta con Assessment previo y configuraciones ya realizadas por el cliente o algún otro proveedor.<br />
+                &bull; <b>CompuSoluciones</b> no es responsable por las aplicaciones in house o de fabricante que requieran una configuración adicional que no esté contemplada en el alcance.<br />
+                &bull; <b>CompuSoluciones</b> no se hace responsable de la replicación si esta presenta   inconsistencias en los enlaces.<br />
+                &bull; <b>CompuSoluciones</b> no se hace responsable por arquitecturas no validadas y/o preventa que no sean ejecutadas por Servicios Profesionales.<br />
+                &bull; <b>CompuSoluciones</b> no realizara ninguna integración con la base de datos o bases de datos replicadas.<br />
+                &bull; <b>CompuSoluciones</b> no se hace responsable de migración de aplicaciones in house del cliente, que no cuenten con soporte o bien no establecidas en el alcance del servicio.<br />
+                &bull; <b>CompuSoluciones</b> no realizara ningún soporte que no esté establecido en el contrato.<br />
+                &bull; <b>CompuSoluciones</b> no se hace responsable de una mala post configuración de la solución.<br />
+                &bull; <b>CompuSoluciones</b> no entregara ningún material de apoyo durante   la transferencia de conocimientos.<br />
+                &bull; <b>CompuSoluciones</b> no realizara ninguna integración con herramientas de seguridad.<br />
+                &bull; <b>CompuSoluciones</b> no realizara ninguna integración de respaldos con aplicaciones como Servidores de base de datos, ERP, entre otros.<br />
+                &bull; <b>CompuSoluciones</b> no se hace responsable del sistema de seguridad a nivel antivirus.<br />
+                &bull; <b>CompuSoluciones</b> no se hace responsable de levantar el reporte al fabricante o problemas con el mismo hardware o software.<br />
+                &bull; <b>CompuSoluciones</b> no se hace responsable de configuraciones en donde no se entregue documentación y/o información que sea elemental para la ejecución del servicio.<br />
+                &bull; <b>CompuSoluciones</b> no será responsable por gastos generados por proveedores externos que estén involucrados al proyecto y bien se asigne en forma directa o indirecta por parte del cliente.<br />
+                &bull; <b>CompuSoluciones</b> no es responsable si existieran movimientos de equipo en la ubicación en donde se llevará a cabo el servicio. (solo si no está considerado en el alcance).<br />
+                &bull; <b>CompuSoluciones</b> no se hace responsable por causas ajenas o factores externos de El cliente que impida seguir ejecutando la implementación, los días establecidos en este contrato deberán de cumplirse conforme a lo solicitado en requerimientos, cualquier desviación en tiempo, alcance y costo deberá de pasar por un Control de Cambios y la revisión de precios.<br />
+            </div>
+
+            <div class="col-md-4"><b>T&eacute;rminos Generales</b></div>
+            <div class="col-md-8">
+                &bull; Antes de dar por iniciado el proyecto se deberá de contar con la Orden de Compra del Servicio en caso de contar con Línea de Crédito o bien efectuar el pago anticipado en las próximas 12 horas naturales.<br />
+                &bull; Una vez que se tenga el pago o la ODC se procederá a asignar el recurso correspondiente en un lapso de 24 horas hábiles. (Consultar punto 21)<br />
+                &bull; El costo no incluye cursos de capacitación a nivel curricular, manuales del sistema operativo, software, migración de otros servicios o cualquier otro tipo de adecuación no especificado claramente en la presente propuesta.<br />
+                &bull; Se requiere del acceso al HW y conectividad eléctrica y de red para la instalación adecuada del equipo.<br />
+                &bull; El costo no incluye software, servidores y estaciones de trabajo o cualquier otro dispositivo de Hardware no especificado claramente en la presente propuesta.<br />
+                &bull; Se asume que El cliente cumple con los prerrequisitos descritos en la junta de planeación o bien en el acuerdo por el medio de comunicación (mail o telefónico).<br />
+                &bull; En caso de que el hardware se encuentre dañado no se procederá con la ejecución de actividades, mismo que se notificara por medio de mail y fotografías.<br />
+                &bull; Si el hardware se encuentre dañado, la gestión de cambio es responsabilidad del cliente.<br />
+                &bull; Se da por hecho que El cliente cuenta con las configuraciones de subnets y sites necesarias para poder realizar dicha migración de buzones (solo si aplica en el alcance)<br />
+                &bull; Se considera que el Hardware esta ya instalado y configurado por El cliente, para poder proceder a la implementación y/o Assessment (Solo en caso que la presente propuesta no considere este alcanzable).<br />
+                &bull; El cliente, es responsable de validar que su entorno a nivel de aplicaciones tanto in house como fabricante sean compatibles con la solución de SW o HW que solicite, se deberá de contar con un análisis preventa en general.<br />
+                &bull; Si El cliente o cualquier otro recurso, sin antes haber recibido la capacitación necesaria y sin consultar a CompuSoluciones y Asociados. o directamente a HP o el Fabricante de su solución o hardware en cuestión, modifica la configuración realizando cambios que afecten al sistema, la garantía perderá validez.<br />
+                &bull; El proyecto tendrá una garantía de 10 días naturales por parte de CompuSoluciones y Asociados En la parte de instalación y configuración, a partir de la entrega del proyecto.<br />
+                &bull; Después de los días de garantía, en caso que existiera algún problema, cada asistencia se deberá considerar como un evento independiente y se cotizara por separado.<br />
+                &bull; En caso de que el proyecto requiera mayor cantidad de horas hombre de las indicadas en el plan de trabajo y esto se deba a causas ajenas a CompuSoluciones y Asociados, el costo tendrá que evaluarse.<br />
+                &bull; Si el tiempo del servicio excede del tiempo establecido y sea por factores ajenos a CompuSoluciones, se realizará un ajuste en el precio del alcance.<br />
+                &bull; Si las ventanas de mantenimiento son canceladas estando el ingeniero en sitio contara como tiempo de servicio establecido en el alcance.<br />
+                &bull; En caso de ser necesario el traslado a las oficinas diferentes de El cliente dentro y fuera de la República Mexicana, a las especificadas y acordadas en el documento, se evaluará el tiempo, costo y recursos que serán desplazados, quedando a cargo El cliente de los gastos generados por viáticos (Transportación, Hospedaje y alimento) o lo que se genere.<br />
+                &bull; Los viáticos hacia las diferentes localidades fuera del D.F. serán pagados por parte de El cliente  antes de la ejecución formal del servicio, o bien emitida la Orden de Compra Formal.<br />
+                &bull; Si se consideran viáticos en la propuesta formal o informal y el tiempo establecido es rebasado por causas ajenas a CompuSoluciones, El cliente deberá de pagar los costos que se generen adicionales.<br />
+                &bull; Cualquier concepto no reflejado en esta propuesta no será válido.<br />           
+            </div>
+
+            <div class="col-md-4"><b>Responsabilidad del cliente</b></div>
+            <div class="col-md-8">
+                &bull; Proporcionar a tiempo la información necesaria para el diseño funcional del sistema con el objetivo de evitar cambios tardíos en la definición de dicha funcionalidad, ya que no se contemplan tiempos de espera y/o rediseños.<br />
+                &bull; Se deberá de contar con una notificación de al menos 24 horas hábiles para confirmación de accesos a sitio, para la gestión de recursos asertiva.<br />
+                &bull; Proporcionar el servidor y los recursos en donde se llevará a cabo la instalación de la Solución Mencionada.<br />
+                &bull; Proporcionar los datos de prueba antes de iniciar la primera prueba modular.<br />
+                &bull; Adquirir las licencias del software que pudieran ser necesarias para la ejecución del proyecto, así como realizar las actividades necesarias para su funcionamiento.<br />
+                &bull; Definir un responsable del proyecto por parte de El cliente (líder o coordinador) durante todo el proyecto, quien revisará los avances, además de ser un facilitador para el desarrollo con conocimiento de los requerimientos funcionales y con la facultad de autorizar los entregables. Preferentemente tendremos contacto únicamente con este líder para focalizar los esfuerzos hacia una sola persona. Cualquier modificación del proyecto será a través de este mismo.<br />
+                &bull; Proveer las facilidades para entrevistas, reuniones, lugar de trabajo para los consultores, etc.<br />
+                &bull; Los usuarios por parte de El cliente deberán estar disponibles puntualmente en las fechas establecidas para revisión; cualquier contratiempo se deberá notificar con anticipación.<br />
+                &bull; Los talleres de entrenamiento se realizarán en las instalaciones proporcionadas por El cliente. Para los talleres que se requiera de equipo de cómputo para los participantes, proporcionará el equipo y su configuración necesaria. (Siempre y cuando el taller o capacitación sean declaradas en el alcance de la propuesta)<br />
+                &bull; Para ventanas de Mantenimiento de Fines de Semana se pide comenzar en tiempo para no retrasar la operación, adicional se pide que las ventanas se establezcan en la junta de Kick Off o antes de la aceptación de esta propuesta.<br />
+            </div>
+            <div class="col-md-4"><b>Firma Contrato</b></div>
+            <div class="col-md-4">
+             <b>CompuSoluciones</b><br />
+                {{nombre}}<br />
+                {{puesto}}<br />
+                {{fecha}}<br />
+                <b>Firma</b>
+            </div>
+            <div class="col-md-4">
+                <b>El cliente</b><br />
+                {{responsable}}<br />
+                {{puestoR}}<br />
+                {{fecha}}<br />
+                <b>Firma</b>
+            </div>
+        </div>
+
+
+        <!--Aqui acaba-->
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <!--Aqui comienza footer-->
+        <div class="footer  panel-footer navbar-fixed-bottom row " style="border: none; background-color:#89898C;">
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 text-center center-block hidden-xs hidden-sm" style="padding: 10px;">
+                <img src="/static/imagenes/logo2.svg" class="img-responsive" />
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center" style="padding-top: 45px;">
+                <p style="color: #fff;">Derechos Reservados CompuSoluciones {{year}}</p>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-center" style="padding-top: 25px;color:#fff">
+                <a target="_blank" href="https://www.facebook.com/CompuSolucionesyAsociados" style="padding: 0px 20px 0px 20px;color:#fff">
+                    <i class="fa fa-facebook circle facebook" aria-hidden="true"></i>
+                </a>
+                <a target="_blank" href="https://twitter.com/CompuSoluciones" style="padding: 0px 20px 0px 20px;color:#fff">
+                    <i class="fa fa-twitter circle twitter  " aria-hidden="true"></i>
+                </a>
+                <a target="_blank" href="https://www.linkedin.com/company-beta/141999/" style="padding: 0px 20px 0px 20px;color:#fff">
+                    <i class="fa fa-linkedin circle linkedin" aria-hidden="true"></i>
+                </a>
+                <a target="_blank" href="https://www.youtube.com/user/CanalCompuSoluciones" style="padding: 0px 20px 0px 20px;color:#fff">
+                    <i class="fa fa-youtube-play circle youtube" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="col-sm-1 col-lg-1 col-md-12 col-xs-12"></div>
+            <div class="col-sm-2 col-lg-2 col-md-12 col-xs-12 text-xs-center">
+                <a href="https://www.compusoluciones.com/aviso-de-privacidad/" target="_blank">
+                    <p style="color: #fff;">Avíso de Privacidad</p>
+                </a>
+
+                <a href="{{url_for('altaP')}}" target="_blank">
+                    <p style="color:#fff;">Quiero ser proveedor SOM</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+   </div>
+
+
+{% endblock %}
+
+    {% block scripts %}
+<script src="/static/scripts/respond.js"></script>
+{% endblock %}
+<!--<script src="/static/scripts/bootstrap.js"></script>
+
+<script src="/static/scripts/dashboard.js"></script>
+<script src="/static/scripts/jquery-1.10.2.js"></script>-->
+<!---->

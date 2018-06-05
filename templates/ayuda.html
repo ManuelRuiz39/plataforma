@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <!-- Latest compiled and minified CSS -->
+    <!-- Material Design Lite -->
+    <link rel="shortcut icon" type="image/png" href="https://scontent.fgdl3-1.fna.fbcdn.net/v/t1.0-1/p50x50/12734268_1063128193753865_1013925773745150687_n.png?oh=f38f57707ea2d7346a7f951b96bbac65&oe=5AD08BC7" />
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-amber.min.css" />
+    <!--<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">-->
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/static/content/encuestas.min.css" />
+    <link rel="stylesheet" href="/static/content/compusoluciones.min.css" />
+</head>
+
+<body>
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title"></span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation ">
+                    <a class="mdl-navigation__link" href="{{url_for('dropsession')}}">Logout</a>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Menu</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="{{ url_for('principal')}}">Home</a>
+                <a class="mdl-navigation__link" href="{{ url_for('servicios')}}">Catalogo de servicios</a>
+                <a class="mdl-navigation__link" href="{{url_for('soluciones')}}">Soluciones activas</a>
+                <a class="mdl-navigation__link" href="{{url_for('trabajo')}}">Configurador de soluciones</a>
+                <a class="mdl-navigation__link" href="{{url_for('contratos')}}">Contratos vigentes</a>
+                <a class="mdl-navigation__link" href="{{ url_for('seguimiento')}}">Seguimiento de solicitudes</a>
+                <a class="mdl-navigation__link" href="{{ url_for('encuestas')}}">Herramientas</a>
+                <a class="mdl-navigation__link" href="{{ url_for('configuracion')}}">Configuracion</a>
+                <a class="mdl-navigation__link" href="{{url_for('ayuda')}}">Ayuda</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <div class="container">
+                <div class="alert alert-success container" role="alert" style="padding-top:30px">
+                    Bienvenido a nuestro sistema de ayuda.
+                </div>
+                <div class="general">
+
+                </div>
+
+                <div class="container general " style=" position: absolute;bottom: 3cm !important; bottom: -1px;left: 100px">
+                    <!--Aqui va el contenido-->
+                    <form action="/charla" method="post">
+                       
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="text" name="text" required>
+                            <label class="mdl-textfield__label" for="sample3">{{nombre}}</label>
+                        </div>
+                        <button type="submit" class="btn btn-info">Buscar</button>
+                    </form>
+
+                </div>
+                <!--Aqui acaba-->
+                    <p style="margin-bottom:250px;"></p>
+              
+
+            </div>
+                <!--Aqui comienza el footer-->
+                <p style="margin-bottom:310px;"></p>
+                <footer class="mdl-mini-footer" style="background-color:#89898C;color:#fff;bottom:0;">
+                    <div class="mdl-mini-footer__left-section">
+                        <div class="mdl-logo"><a href="https://www.compusoluciones.com/"><img src="/static/imagenes/logo2.svg" style="width:150px;height:40px;"></a></div>
+                        <div class="mdl-mini-footer__left-section">
+                            <ul class="mdl-mini-footer__link-list">
+                                <li><a href="#">Derechos reservados CompuSoluciones {{year}}</a></li>
+                            </ul>
+                        </div>
+                        <div class="mdl-mini-footer__left-section">
+                            <ul class="mdl-mini-footer__link-list">
+                                <li>
+                                    <a target="_blank" href="https://www.facebook.com/CompuSolucionesyAsociados" style="color:#fff">
+                                        <i class="fa fa-facebook circle facebook" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://twitter.com/CompuSoluciones" style="color:#fff">
+                                        <i class="fa fa-twitter circle twitter  " aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.linkedin.com/company-beta/141999/" style="color:#fff">
+                                        <i class="fa fa-linkedin circle linkedin" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.youtube.com/user/CanalCompuSoluciones" style="color:#fff">
+                                        <i class="fa fa-youtube-play circle youtube" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mdl-mini-footer__left-section">
+                            <ul class="mdl-mini-footer__link-list">
+                                <li><a href="https://www.compusoluciones.com/aviso-de-privacidad/">Aviso de privacidad</a></li>
+                                <li><a href="{{url_for('altaP')}}">Quiero ser proveedor SOM</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </footer>
+
+                </div>
+        </main>
+    </div>
+
+
+
+    <script src="/static/scripts/respond.min.js"></script>
+    <script src="/static/scripts/draas.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+    {% block scripts %}{% endblock %}
+    <!--<script src="/static/scripts/bootstrap.js"></script>
+
+    <script src="/static/scripts/dashboard.js"></script>
+    <script src="/static/scripts/jquery-1.10.2.js"></script>-->
+    <!---->
+
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,512 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <!-- Latest compiled and minified CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <!-- Material Design Lite -->
+    <link rel="shortcut icon" type="image/png" href="https://scontent.fgdl3-1.fna.fbcdn.net/v/t1.0-1/p50x50/12734268_1063128193753865_1013925773745150687_n.png?oh=f38f57707ea2d7346a7f951b96bbac65&oe=5AD08BC7" />
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-amber.min.css" />
+    <!--<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">-->
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/static/content/compusoluciones.min.css" />
+    <link rel="stylesheet" href="/static/content/modal.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body>
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title"></span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation ">
+                    <a class="mdl-navigation__link" href="{{url_for('dropsession')}}">Logout</a>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Menu</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="{{ url_for('principal')}}">Home</a>
+                <a class="mdl-navigation__link" href="{{ url_for('servicios')}}">Catalogo de servicios</a>
+                <a class="mdl-navigation__link" href="{{url_for('soluciones')}}">Soluciones activas</a>
+                <a class="mdl-navigation__link" href="{{url_for('trabajo')}}">Configurador de soluciones</a>
+                <a class="mdl-navigation__link" href="{{url_for('contratos')}}">Contratos vigentes</a>
+                <a class="mdl-navigation__link" href="{{ url_for('seguimiento')}}">Seguimiento de solicitudes</a>
+                <a class="mdl-navigation__link" href="{{ url_for('encuestas')}}">Herramientas</a>
+                <a class="mdl-navigation__link" href="{{ url_for('configuracion')}}">Configuracion</a>
+                <a class="mdl-navigation__link" href="{{url_for('ayuda')}}">Ayuda</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <!--Aqui va el contenido-->
+                <div class="alert alert-success container" role="alert" style="padding-top:30px">
+                    <strong>Monitoreo:</strong>
+                    <br />
+                    Centro de Operaciones:
+                    <br />
+                    &bull;	Operaci&oacute;n 7x24x365 que monitorea m&aacute;s de 25000 dispositivos de red y seguridad y 3,000 Servidores virtuales.<br />
+                    &bull;	Cuenta con procesos operativos de seguridad y redes basados en las mejores pr&aacute;cticas (ITIL, ISO 27001)<br />
+                    &bull;	Infraestructura tecnol&oacute;gica albergada en centro de datos Tier 4 con nivel de disponibilidad del 99.95%<br />
+                    &bull;	Especialistas certificados en tecnolog&iacute;a y pr&aacute;cticas de seguridad y redes (ITIL, ISO27000:2013)<br />
+                    &bull;	Esquema de recuperaci&oacute;n del servicio en sitio alterno en 45 minutos en caso de contingencia.<br />
+                </div>
+                <!--Modal nube-->
+               
+                <!--Botones de monitoreo-->
+                <div class="container" >
+                    <form action="/monitoreoSolicitado" method="post">
+                    <a href="#"> <div class="col-md-3 show-modal"><img src="/static/imagenes/nube.png" class="img-circle" /><br /><b>Nube y Virtualizaci&oacute;n</b></div></a>
+                    <a href="#"><div class="col-md-3 muestra"><img src="/static/imagenes/app.png" class="img-circle" /><br /><b>Aplicaciones</b></div></a>    
+                    <a href="#"><div class="col-md-3 muestra2"><img src="/static/imagenes/db.png" class="img-circle" /><br /><b>Bases de datos</b></div></a>    
+                    <a href="#"><div class="col-md-3 muestra3"><img src="/static/imagenes/redes.png" class="img-circle" /><br /><b>Networking/Wireless</b></div></a>   
+                    <a href="#"><div class="col-md-3 muestra4"><img src="/static/imagenes/servidores.png" class="img-circle" /><br /><b>Servidores</b></div></a>    
+                    <a href="#"><div class="col-md-3 muestra5"><img src="/static/imagenes/storage.png" class="img-circle" /><br /><b>NAS/SAN</b></div></a>
+                    <a href="#"><div class="col-md-3 muestra6"><img src="/static/imagenes/firewall.png" class="img-circle" /><br /><b>Firewalls</b></div></a>    
+                    <a href="#"><div class="col-md-3 muestra7"><img src="/static/imagenes/datacenter.png" class="img-circle" /><br /><b>Energia y Datacenter</b></div></a>    
+                    <a href="#"><div class="col-md-3 muestra8"><img src="/static/imagenes/ncm.png" class="img-circle" /><br /><b>NCM Support</b></div></a>    
+                    <a href="#"><div class="col-md-3 muestra9"><img src="/static/imagenes/VoIP.png" class="img-circle" /><br /><b>VoIP</b></div></a>    
+
+                    
+                </div> 
+                <div class="container" style="margin-bottom:200px;margin-top:50px;">
+                    <button type="submit" class="vista btn btn-success">Solicitar</button>
+                    {{jsonData}}
+                </div>
+                </form>
+                <dialog class="mdl-dialog">
+                    
+                    <div class="mdl-dialog__content">
+                        <p>Monitoreo de nube publica y nube privada facilmente mediante un solo panel.</p>
+                        <p>&bull;CloudStack</p>
+                        <p>&bull;OpenStack</p>
+                        <p>&bull;AWS</p>
+                        <p>&bull;Google Cloud</p>
+                        <p>&bull;Rackspace</p>
+                        <p>&bull;VMWare</p>
+                        <p>&bull;Xen</p>
+                        <p>&bull;KVM</p>
+                        <p>&bull;HyperV</p>
+                    </div>
+                    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                        <button type="button" class="mdl-button add" style="text-align:center;" value="Nube y Virtualizacion">Agregar</button>
+                    </div>
+                    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                        <button type="button" class="mdl-button close" style="text-align:center;">Cerrar</button>
+                    </div>
+                    </dialog>
+
+                <dialog class="mdl-dialog dia1">
+                    <div class="mdl-dialog__content">
+                       <p>Analisis dedicado de aplicativos.</p>
+                        <p>&bull;Active Directory</p>
+                        <p>&bull;DHCP</p>
+                        <p>&bull;DNS</p>
+                        <p>&bull;Exchange</p>
+                        <p>&bull;IIS</p>
+                        <p>&bull;SQL Server</p>
+                        <p>&bull;Hadoop</p>
+                        <p>&bull;Jboss</p>
+                        <p>&bull;Tomcat</p>
+                        <p>&bull;Oracle</p>
+                    </div>
+                    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                        <button type="button" class="mdl-button add" style="text-align:center;" value="aplicativo">Agregar</button>
+                    </div>
+                    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                        <button type="button" class="mdl-button close" style="text-align:center;">Cerrar</button>
+                    </div>
+                </dialog>
+                <dialog class="mdl-dialog dia2">
+                    <div class="mdl-dialog__content">
+                       <p>Monitorea la alta disponibilidad y performance de la base de datos asi como su impacto en los dispositivos.</p>
+                        <p>&bull;Microsoft SQL</p>
+                        <p>&bull;Oracle</p>
+                        <p>&bull;Sybase</p>
+                        <p>&bull;DB2</p>
+                        <p>&bull;MySQL</p>
+                        <p>&bull;Postgres</p>
+                        <p>&bull;Hadoop</p>
+                    </div>
+                    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                        <button type="button" class="mdl-button add" style="text-align:center;" value="Bases de datos">Agregar</button>
+                    </div>
+                    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                        <button type="button" class="mdl-button close" style="text-align:center;">Cerrar</button>
+                    </div>
+                </dialog>
+                <dialog class="mdl-dialog dia3">
+                    <div class="mdl-dialog__content">
+                    <p>Monitorea todos los elementos de tu infraestructura de red heterogenea.</p>
+                        <p>&bull;Routers</p>
+                        <p>&bull;Switches</p>
+                        <p>&bull;Balanceadores de carga</p>
+                        <p>&bull;Content Management switches</p>
+                        <p>&bull;WLAN Hubs</p>
+                        <p>&bull;Nexus</p>
+                        <p>&bull;Juniper</p>
+                        <p>&bull;Netscreen</p>
+                        <p>&bull;Foundry</p>
+                        <p>&bull;Linksys</p>
+                        <p>&bull;Nortel</p>
+                        <p>&bull;Cisco</p>
+                        <p>&bull;Alteon</p>
+                    </div>
+                    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                        <button type="button" class="mdl-button add" style="text-align:center;" value="Networking/Wireless">Agregar</button>
+                    </div>
+                    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                        <button type="button" class="mdl-button close" style="text-align:center;">Cerrar</button>
+                    </div>
+                </dialog>
+                <dialog class="mdl-dialog dia4">
+                    <div class="mdl-dialog__content">
+                      <p>Descubre e inicia el monitoreo de servidores, discos y memoria dentro de la red.</p>
+                        <p>&bull;HP</p>
+                        <p>&bull;DELL</p>
+                        <p>&bull;IBM</p>
+                        <p>&bull;LENOVO</p>
+                        <p>&bull;Windows Server</p>
+                        <p>&bull;Solaris</p>
+                        <p>&bull;HPUX</p>
+                        <p>&bull;AIX</p>
+                        <p>&bull;RedHat</p>
+                        <p>&bull;SUSE</p>
+                        <p>&bull;Debian</p>
+                    </div>
+                    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                        <button type="button" class="mdl-button add" style="text-align:center;" value="Servidores">Agregar</button>
+                    </div>
+                    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                        <button type="button" class="mdl-button close" style="text-align:center;">Cerrar</button>
+                    </div>
+                </dialog>
+                <dialog class="mdl-dialog dia5">
+                    <div class="mdl-dialog__content">
+                      <p>Monitorea tus sistemas de almacenamiento y genera reportes predictivos de los umbrales en la capacidad de discos.</p>
+                        <p>&bull;HP</p>
+                        <p>&bull;SUN</p>
+                        <p>&bull;DELL</p>
+                        <p>&bull;IBM</p>
+                        <p>&bull;Symmetrix</p>
+                        <p>&bull;ADIC</p>
+                        <p>&bull;McData</p>
+                        <p>&bull;Brocade</p>
+                        <p>&bull;Network Appliance Filers</p>
+                        <p>&bull;EMC/Clarion</p>
+                        <p>&bull;Hitachi</p>
+                    </div>
+                    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                        <button type="button" class="mdl-button add" style="text-align:center;" value="NAS/SAN">Agregar</button>
+                    </div>
+                    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                        <button type="button" class="mdl-button close" style="text-align:center;">Cerrar</button>
+                    </div>
+                </dialog>
+                <dialog class="mdl-dialog dia6">
+                    <div class="mdl-dialog__content">
+                        <p>Monitorea metricas criticas y alertas en tus firewalls y provee una administración centralizada en la red.</p>
+                        <p>&bull;Checkpoint</p>
+                        <p>&bull;CISCO PIX</p>
+                        <p>&bull;Juniper</p>
+                        <p>&bull;Blue Coat</p>
+                        <p>&bull;Fortinet</p>
+                        <p>&bull;IronPort</p>
+                        <p>&bull;NetASQ</p>
+                    </div>
+                    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                        <button type="button" class="mdl-button add" style="text-align:center;" value="Firewalls">Agregar</button>
+                    </div>
+                    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                        <button type="button" class="mdl-button close" style="text-align:center;">Cerrar</button>
+                    </div>
+                </dialog>
+                <dialog class="mdl-dialog dia7">
+                    <div class="mdl-dialog__content">
+                        <p>Monitorea facilmente la infraesructura de los datacenters.</p>
+                        <p>&bull;Liebert UPS</p>
+                        <p>&bull;Liebert HVAC</p>
+                        <p>&bull;Amperion Brondhand over PowerLine</p>
+                        <p>&bull;APC UPS</p>
+                        <p>&bull;Omnitronix</p>
+                        <p>&bull;Valere DC Generators</p>
+                        <p>&bull;ADIC Tape Library</p>
+                    </div>
+                    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                        <button type="button" class="mdl-button add" style="text-align:center;" value="Energia y DataCenter">Agregar</button>
+                    </div>
+                    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                        <button type="button" class="mdl-button close" style="text-align:center;">Cerrar</button>
+                    </div>
+                </dialog>
+                <dialog class="mdl-dialog dia8">
+                    <div class="mdl-dialog__content">
+                        <p>Monitorea el desempeño de tu infraestructura VoIP con metricas clave.</p>
+                        <p>&bull;Broadworks</p>
+                        <p>&bull;Cisco IP-SLA (SAA)</p>
+                        <p>&bull;Cisco Call Manager</p>
+                        <p>&bull;Cisco ITP</p>
+                        <p>&bull;Kagoor</p>
+                        <p>&bull;Cisco Meeting Place</p>
+                        <p>&bull;MS Lync</p>
+                    </div>
+                    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                        <button type="button" class="mdl-button add" style="text-align:center;" value="NCM support">Agregar</button>
+                    </div>
+                    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                        <button type="button" class="mdl-button close" style="text-align:center;">Cerrar</button>
+                    </div>
+                </dialog>
+                <dialog class="mdl-dialog dia9">
+                    <div class="mdl-dialog__content">
+                        <p>Modulo integrado de configuracion y administración de red, habilita backup, restaurración y seguimiento de cambios de configuraciones en un dispositivo de red.</p>
+                        <p>&bull;3COM</p>
+                        <p>&bull;HP</p>
+                        <p>&bull;CISCO</p>
+                        <p>&bull;JUNIPER</p>
+                        <p>&bull;NORTEL</p>
+                        <p>&bull;DELL</p>
+                        <p>&bull;ETERASYS</p>
+                        <p>&bull;EXTREME</p>
+                        <p>&bull;F5</p>
+                        <p>&bull;FIREWALLS</p>
+                        <p>&bull;OTROS</p>
+                    </div>
+                    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                        <button type="button" class="mdl-button add" style="text-align:center;" value="VOIP">Agregar</button>
+                    </div>
+                    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                        <button type="button" class="mdl-button close" style="text-align:center;">Cerrar</button>
+                    </div>
+                </dialog>
+                    <!--Aqui acaba-->
+                    <!--Aqui va footer-->
+                    <footer class="mdl-mini-footer" style="background-color:#89898C;color:#fff">
+                        <div class="mdl-mini-footer__left-section">
+                            <div class="mdl-logo"><a href="https://www.compusoluciones.com/"><img src="/static/imagenes/logo2.svg" style="width:150px;height:40px;"></a></div>
+                            <div class="mdl-mini-footer__left-section">
+                                <ul class="mdl-mini-footer__link-list">
+                                    <li><a href="#">Derechos reservados CompuSoluciones {{year}}</a></li>
+                                </ul>
+                            </div>
+                            <div class="mdl-mini-footer__left-section">
+                                <ul class="mdl-mini-footer__link-list">
+                                    <li>
+                                        <a target="_blank" href="https://www.facebook.com/CompuSolucionesyAsociados" style="color:#fff">
+                                            <i class="fa fa-facebook circle facebook" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="https://twitter.com/CompuSoluciones" style="color:#fff">
+                                            <i class="fa fa-twitter circle twitter  " aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="https://www.linkedin.com/company-beta/141999/" style="color:#fff">
+                                            <i class="fa fa-linkedin circle linkedin" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a target="_blank" href="https://www.youtube.com/user/CanalCompuSoluciones" style="color:#fff">
+                                            <i class="fa fa-youtube-play circle youtube" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="mdl-mini-footer__left-section">
+                                <ul class="mdl-mini-footer__link-list">
+                                    <li><a href="https://www.compusoluciones.com/aviso-de-privacidad/">Aviso de privacidad</a></li>
+                                    <li><a href="{{url_for('altaP')}}">Quiero ser proveedor SOM</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </footer>
+
+</div>
+        </main>
+    </div>
+
+
+
+    
+    {% block scripts %}
+    <script src="/static/scripts/respond.min.js"></script>
+    <script>
+            var dialog = document.querySelector('dialog');
+            var showModalButton = document.querySelector('.show-modal');
+
+            var dialog1 = document.querySelector('.dia1');
+            var showM = document.querySelector('.muestra');
+
+            var dialog2 = document.querySelector('.dia2');
+            var showM2 = document.querySelector('.muestra2');
+
+            var dialog3 = document.querySelector('.dia3');
+            var showM3 = document.querySelector('.muestra3');
+
+            var dialog4 = document.querySelector('.dia4');
+            var showM4 = document.querySelector('.muestra4');
+
+            var dialog5 = document.querySelector('.dia5');
+            var showM5 = document.querySelector('.muestra5');
+
+            var dialog6 = document.querySelector('.dia6');
+            var showM6 = document.querySelector('.muestra6');
+
+            var dialog7 = document.querySelector('.dia7');
+            var showM7 = document.querySelector('.muestra7');
+
+            var dialog8 = document.querySelector('.dia8');
+            var showM8 = document.querySelector('.muestra8');
+
+            var dialog9 = document.querySelector('.dia9');
+            var showM9 = document.querySelector('.muestra9');
+
+
+            if (!dialog.showModal) {
+                dialogPolyfill.registerDialog(dialog);
+            }
+            if (!dialog1.showModal) {
+                dialogPolyfill.registerDialog(dialog1);
+            }
+            if (!dialog2.showModal) {
+                dialogPolyfill.registerDialog(dialog2);
+            }
+            if (!dialog3.showModal) {
+                dialogPolyfill.registerDialog(dialog3);
+            }
+            if (!dialog4.showModal) {
+                dialogPolyfill.registerDialog(dialog4);
+            }
+            if (!dialog5.showModal) {
+                dialogPolyfill.registerDialog(dialog5);
+            }
+            if (!dialog6.showModal) {
+                dialogPolyfill.registerDialog(dialog6);
+            }
+            if (!dialog7.showModal) {
+                dialogPolyfill.registerDialog(dialog7);
+            }
+            if (!dialog8.showModal) {
+                dialogPolyfill.registerDialog(dialog8);
+            }
+            if (!dialog9.showModal) {
+                dialogPolyfill.registerDialog(dialog9);
+            }
+            showModalButton.addEventListener('click', function () {
+                dialog.showModal();
+            });
+            dialog.querySelector('.close').addEventListener('click', function () {
+                dialog.close();
+            });
+            showM.addEventListener('click', function () {
+                dialog1.showModal();
+            });
+            dialog1.querySelector('.close').addEventListener('click', function () {
+                dialog1.close();
+            });
+            showM2.addEventListener('click', function () {
+                dialog2.showModal();
+            });
+            dialog2.querySelector('.close').addEventListener('click', function () {
+                dialog2.close();
+            });
+            showM3.addEventListener('click', function () {
+                dialog3.showModal();
+            });
+            dialog3.querySelector('.close').addEventListener('click', function () {
+                dialog3.close();
+            });
+            showM4.addEventListener('click', function () {
+                dialog4.showModal();
+            });
+            dialog4.querySelector('.close').addEventListener('click', function () {
+                dialog4.close();
+            });
+            showM5.addEventListener('click', function () {
+                dialog5.showModal();
+            });
+            dialog5.querySelector('.close').addEventListener('click', function () {
+                dialog5.close();
+            });
+
+            showM6.addEventListener('click', function () {
+                dialog6.showModal();
+            });
+            dialog6.querySelector('.close').addEventListener('click', function () {
+                dialog6.close();
+            });
+
+            showM7.addEventListener('click', function () {
+                dialog7.showModal();
+            });
+            dialog7.querySelector('.close').addEventListener('click', function () {
+                dialog7.close();
+            });
+
+            showM8.addEventListener('click', function () {
+                dialog8.showModal();
+            });
+            dialog8.querySelector('.close').addEventListener('click', function () {
+                dialog8.close();
+            });
+            showM9.addEventListener('click', function () {
+                dialog9.showModal();
+            });
+            dialog9.querySelector('.close').addEventListener('click', function () {
+                dialog9.close();
+            });
+
+            $(".add").on("click", function () {
+
+                var selec = $(this).val();
+                var car = [];
+                car.push(selec);
+                alert(car);
+
+            });
+            $(".vista").on("click", function () {
+                //alert(JSON.stringify(car));
+                $.ajax({
+                    type: 'POST',
+                    contentType: 'application/json',
+                    url: '/monitoreoSolicitado',
+                    dataType: 'json',
+                    data: JSON.stringify(car),
+                    error: function (result) {
+                        console.log(result);
+                    }
+                });
+            });
+
+    </script>
+    {% endblock %}
+    <!--<script src="/static/scripts/bootstrap.js"></script>
+
+    <script src="/static/scripts/dashboard.js"></script>
+    <script src="/static/scripts/jquery-1.10.2.js"></script>-->
+    <!---->
+
+</body>
+</html>
+
+
+
+
+

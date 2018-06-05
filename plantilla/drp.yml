@@ -1,0 +1,38 @@
+categories:
+- DRaaS
+conversations:
+- - Donde estara mi informacion
+  - En el Data Center de Alestra en Queretaro
+- - Cuanto cuesta el servicio DRaaS
+  - El costo dependera de la cantidad de VMs y el pago se realizara mensualmente.
+- - Con que herramienta se realizan las replicas
+  - Para generar las replicas nosotros utilizamos Veeam Backup & Replication
+  - Se recomienda un enlace simetrico mayor o igual a 300Mb
+- - Que necesito para tener DRaaS
+  - Solo requerimos conocer las caracteristicas y cantidades de las VMs para  generar una cotizacion.
+- - Que es DRaaS
+  - Es una solucion de servicio de recuperacion de desastres en la nube.
+- - Donde lo puedo proponer
+  - A empresas 100% virtualizadas con VMWare o Hyper-V
+- - Quienes podrian ser mis clientes
+  - Empresas 100% virtualizadas con VMWare o Hyper-V
+- - Que beneficios tengo
+  - cero inversion de adquisicion en infraestructura, escalabildad y seguridad.
+- - Que es SOM
+  - Somos una celula agnosotica, dedicada a ofrecerte soluciones como servicio
+- - Funciona con RedHat
+  - No, unicamente VMWware o Hyper-V
+- - Funciona con la nube de VMWare
+  - No, esta dedicado en el data center de Alestra 
+- - Cual es mi RTO
+  - Dependemos del enlace y la capacidad de las VMs
+- - Funciona con linux
+  - No, unicamente VMWware o Hyper-V
+- - Cual seria mi ROI
+  - Retribucion mensual a largo plazo 
+- - Necesito Firewall
+  - No es necesario aunque es conveniente por seguridad
+- - Por que en Alestra
+  - Por la acreditacion de sus certificaciones a nivel mundial ICREA 5 
+- - Por que con Veeam
+  - por la seguridad y confiabilidad de la marca otorga. 

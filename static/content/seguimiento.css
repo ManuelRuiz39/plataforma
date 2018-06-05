@@ -1,0 +1,63 @@
+﻿.one, .two, .three, .four, .five, .six {
+    position: absolute;
+    margin-top: -10px;
+    z-index: 1;
+    height: 40px;
+    width: 40px;
+    border-radius: 25px;
+    
+}
+
+.one {
+    left: 15%;    
+}
+
+.two {
+    left: 30%;
+}
+
+.three {
+    left: 45%;
+}
+
+.four {
+    left: 60%;
+}
+
+.five {
+    left: 75%;
+}
+
+.six {
+    left: 96%;
+}
+
+
+
+.primary-color {
+    background-color: #cc0000;
+}
+
+.success-color {
+    background-color: #800000;
+}
+
+.danger-color {
+    background-color: #ffb3b3;
+}
+
+.warning-color {
+    background-color: #ff6666;
+}
+
+.info-color {
+    background-color: #ff1a1a;
+}
+.complete {
+    background-color: #4d0000;
+}
+
+.no-color {
+    background-color: inherit;
+}
+

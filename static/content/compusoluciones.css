@@ -1,0 +1,120 @@
+﻿/*estilo de compu*/
+
+/*General*/
+h1{
+    font-family: Exo;
+    font-size: 59px;
+    line-height: 3.7em;
+}
+h2 {
+    font-family: Exo;
+    font-size: 46px;
+    line-height: 2.9em;
+}
+h3 {
+    font-family: Exo;
+    font-size: 33px;
+    line-height: 2.10em;
+}
+h4 {
+    font-family: Exo;
+    font-size: 24px;
+    line-height: 1.5em;
+}
+
+a{
+    font-family: 'News Gothic';
+    font-size: 16px;
+    line-height: 1em;
+}
+
+p{
+    font-family: 'News Gothic';
+    font-size: 16px;
+    line-height: 1em;
+}
+
+button {
+    font-size: 1em;
+    font-family: 'News Gothic';
+}
+
+/*Clases botones*/
+.white {
+    font-size: 1em;
+    font-family: 'News Gothic';
+    color: #FFFFFF;
+}
+.blue {
+    font-size: 1em;
+    font-family: 'News Gothic';
+    color: #00549F;
+}
+.orange {
+    font-size: 1em;
+    font-family: 'News Gothic';
+    color: #FFA100;
+}
+.red {
+    font-size: 1em;
+    font-family: 'News Gothic';
+    color: #E00034;
+}
+.green {
+    font-size: 1em;
+    font-family: 'News Gothic';
+    color: #3F9C35;
+}
+.grey {
+    font-size: 1em;
+    font-family: 'News Gothic';
+    color: #989798;
+}
+/*Texto general*/
+.general {
+    font-family: 'News Gothic';
+    font-size: 16px;
+    line-height: 1em;
+}
+
+.ancla {
+    position: absolute;
+    bottom: 0 !important;
+    bottom: -1px;
+    
+}
+.derecho {
+    font-family: 'News Gothic';
+    text-align: center;
+    color: #89898C;
+    font-size: .7em;
+    padding-bottom: 30px;
+}
+
+.tiempo {
+
+    text-align: right;
+    font-family: 'News Gothic';
+    color: #00549F;
+}
+
+.chatU {
+    text-align: right;
+    font-family: 'News Gothic';
+    color: #FFA100;
+}
+
+.chatB {
+    text-align: right;
+    font-family: 'News Gothic';
+    color: #3F9C35;
+}
+
+.banner{
+    top: 0 ;
+    width: 100%;
+    left: 0;
+    position: absolute;
+    
+}
+

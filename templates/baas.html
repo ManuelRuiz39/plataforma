@@ -1,0 +1,300 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+    <!-- Material Design Lite -->
+    <link rel="shortcut icon" type="image/png" href="https://scontent.fgdl3-1.fna.fbcdn.net/v/t1.0-1/p50x50/12734268_1063128193753865_1013925773745150687_n.png?oh=f38f57707ea2d7346a7f951b96bbac65&oe=5AD08BC7" />
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-amber.min.css" />
+    <!--<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">-->
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/static/content/encuestas.min.css" />
+    <link rel="stylesheet" href="/static/content/compusoluciones.min.css" />
+</head>
+
+<body>
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title"></span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation ">
+                    <a class="mdl-navigation__link" href="{{url_for('dropsession')}}">Logout</a>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Menu</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="{{ url_for('principal')}}">Home</a>
+                <a class="mdl-navigation__link" href="{{ url_for('servicios')}}">Catalogo de servicios</a>
+                <a class="mdl-navigation__link" href="{{url_for('soluciones')}}">Soluciones Activas</a>
+                <a class="mdl-navigation__link" href="{{url_for('trabajo')}}">Configurador de soluciones</a>
+                <a class="mdl-navigation__link" href="{{url_for('contratos')}}">Contratos vigentes</a>
+                <a class="mdl-navigation__link" href="{{ url_for('seguimiento')}}">Seguimiento de solicitudes</a>
+                <a class="mdl-navigation__link" href="{{ url_for('encuestas')}}">Herramientas</a>
+                <a class="mdl-navigation__link" href="{{ url_for('configuracion')}}">Configuracion</a>
+                <a class="mdl-navigation__link" href="{{url_for('ayuda')}}">Ayuda</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <div class="alert alert-info container" role="alert" style="padding-top:30px">
+                    <b>BaaS</b>
+
+                </div>
+                <!--Aqui va el contenido-->
+                <div class="container" >
+                    <form action="/baasenv" method="post" >
+                       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" name="uf">
+                            <label class="mdl-textfield__label" for="sample3">Usuario final</label>
+                        </div>
+                        <br />
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" name="presupuesto">
+                            <label class="mdl-textfield__label" for="sample4">Presupuesto estimado para el servicio</label>
+                            <span class="mdl-textfield__error">¡Debe ser un valor numerico!</span>
+                        </div>
+                        <br />
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" name="autoridad">
+                            <label class="mdl-textfield__label" for="sample3">Autoridad para toma de desici&oacute;n</label>
+                        </div>
+                        <br />
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" name="necesidad">
+                            <label class="mdl-textfield__label" for="sample3">Requerimiento</label>
+                        </div>
+                        <br />
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="date" name="tiempo" value="{{tiempo}}">
+                            <label class="mdl-textfield__label" for="sample3">Fecha de cierre estimada</label>
+                        </div>
+                        
+                       
+                        <br /><br />
+                        <hr />
+                    
+                    <div class="row clearfix">
+                        <div class="col-md-12 table-responsive">
+                            <table class="table table-bordered table-hover table-sortable" id="tab_logic">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">
+                                            Nombre del respaldo
+                                        </th>
+                                        <!-- <th class="text-center">
+                                             RTO
+                                         </th>
+                                         <th class="text-center">
+                                             RPO
+                                         </th>-->
+                                        <th class="text-center">
+                                            Sistema Operativo
+                                        </th>
+                                        <th class="text-center">
+                                            Hipervisor
+                                        </th>
+                                        <th class="text-center">
+                                            Cantidad de maquinas
+                                        </th>
+                                        <th class="text-center">
+                                            Aplicativos
+                                        </th>
+                                        <th class="text-center">
+                                            Storage
+                                        </th>
+
+                                        <th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr id='addr0' data-id="0" >
+                                        <td data-name="name">
+                                            <input type="text" name='name' placeholder='Nombre del servidor a respaldar' class="form-control" />
+                                        </td>
+
+                                        <!-- <td data-name="desc">
+                                             <input type="text" name='rto' placeholder='RTO' class="form-control" />
+
+                                         </td>
+                                         <td data-name="desc">
+                                             <input type="text" name='rpo' placeholder='RPO' class="form-control" />
+
+                                         </td>-->
+                                        <td data-name="desc">
+                                            <select name="so" class="form-control">
+                                                <option selected="selected">Selecciona el SO</option>
+                                                <option value="Win 2016 E">Windows server 2016 Essentials</option>
+                                                <option value="Win 2016 D">Windows server 2016 DataCenter</option>
+                                                <option value="Win 2016 S">Windows Server 2016 Standard</option>
+                                                <option value="Win 2012 E">Windows server 2012 Essentials</option>
+                                                <option value="Win 2012 F">Windows server 2012 Foundation</option>
+                                                <option value="Win 2012 D">Windows server 2012 DataCenter</option>
+                                                <option value="Win 2012 S">Windows Server 2012 Standard</option>
+                                                <option value="Win 2008 S">Windows server 2008 Standard</option>
+                                                <option value="Win 2008 D">Windows server 2008 DataCenter</option>
+                                                <option value="Win 2008 Enterprise">Windows Server 2008 Enterprise</option>
+                                                <option value="Ubuntu 16.04">Ubuntu Server 16.04.3</option>
+                                                <option value="Ubuntu 17.10">Ubuntu Server 17.10</option>
+                                                <option value="Debian 8.9">Debian 8.9</option>
+                                                <option value="Debian 9">Debian 9</option>
+                                                <option value="RHEL 6.9">RHEL 6.9</option>
+                                                <option value="RHEL 7.3">RHEL 7.3</option>
+                                                <option value="RHEL 7.4">RHEL 7.4</option>
+                                                <option value="SLES 12 SP1">SLES 12 SP1</option>
+                                                <option value="SLES 12 SP1">SLES 12 SP2</option>
+                                                <option value="SLES 12 SP1">SLES 12 SP3</option>
+                                                <option value="HP-UX 11iv3">HP-UX 11iv3</option>
+                                                <option value="AIX 7.2">AIX 7.2</option>
+                                            </select>
+
+                                        </td>
+
+                                        <td data-name="">
+                                            <select name="hipervisor" class="form-control">
+                                                <option value="VMWare">VMWare</option>
+                                                <option value="Hyper-V">Hyper-V</option>
+                                                <option value="KVM">KVM</option>
+                                            </select>
+                                        </td>
+                                        <td data-name="desc">
+                                            <select name="maquinas" class="form-control">
+                                                {% for x in range(1,101): %}
+                                                <option value="{{x}}">{{x}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </td>
+                                        <td data-name="name">
+                                            <textarea name="aplicativos" placeholder="Description" class="form-control"></textarea>
+                                        </td>
+                                        <td data-name="name">
+                                            <input type="text" name='storage' placeholder='Almacenamiento ' class="form-control" />
+                                        </td>
+
+                                        <td data-name="del">
+                                            <button nam"del0" class='btn btn-danger glyphicon glyphicon-remove rm'></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <a id="add" class="btn btn-default pull-right">Agregar Fila</a>
+                </div>
+                <div class="container">
+                    <hr />
+                </div>
+                <div class="container" style="text-align:right;margin-bottom:150px;">
+                    <button type="submit" class="btn btn-success">Enviar Solicitud</button>
+                   
+                </div>
+                </form>
+               
+
+                <!--Aqui va footer-->
+                <footer class="mdl-mini-footer" style="background-color:#89898C;color:#fff">
+                    <div class="mdl-mini-footer__left-section">
+                        <div class="mdl-logo"><a href="https://www.compusoluciones.com/"><img src="/static/imagenes/logo2.svg" style="width:150px;height:40px;"></a></div>
+                        <div class="mdl-mini-footer__left-section">
+                            <ul class="mdl-mini-footer__link-list">
+                                <li><a href="#">Derechos reservados CompuSoluciones {{year}}</a></li>
+                            </ul>
+                        </div>
+                        <div class="mdl-mini-footer__left-section">
+                            <ul class="mdl-mini-footer__link-list">
+                                <li>
+                                    <a target="_blank" href="https://www.facebook.com/CompuSolucionesyAsociados" style="color:#fff">
+                                        <i class="fa fa-facebook circle facebook" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://twitter.com/CompuSoluciones" style="color:#fff">
+                                        <i class="fa fa-twitter circle twitter  " aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.linkedin.com/company-beta/141999/" style="color:#fff">
+                                        <i class="fa fa-linkedin circle linkedin" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://www.youtube.com/user/CanalCompuSoluciones" style="color:#fff">
+                                        <i class="fa fa-youtube-play circle youtube" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mdl-mini-footer__left-section">
+                            <ul class="mdl-mini-footer__link-list">
+                                <li><a href="https://www.compusoluciones.com/aviso-de-privacidad/">Aviso de privacidad</a></li>
+                                <li><a href="{{url_for('altaP')}}">Quiero ser proveedor SOM</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </footer>
+
+                <!--Aqui acaba-->
+            </div>
+        </main>
+    </div>
+
+
+{% block scripts %}
+    <script src="/static/scripts/respond.js"></script>
+    <script>
+    $(document).ready(function(){
+            var incre = 0;
+            $("#add").on("click",function(){
+                incre = 1 + incre;
+                $clone =$("table tbody tr:first").clone();
+                $clone.find("input").each(function(){
+                    $(this).val(" ");
+                });
+            $("table tbody").append($clone);
+            });
+            $(document).on("click", 'button.rm', function () {
+                $(this).closest('tr').remove();
+                return false;
+            });
+
+
+        });
+    </script>
+
+{% endblock %}
+    <!--<script src="/static/scripts/bootstrap.js"></script>
+
+    <script src="/static/scripts/dashboard.js"></script>
+    <script src="/static/scripts/jquery-1.10.2.js"></script>-->
+    <!---->
+
+</body>
+</html>
+
+
+
+
+

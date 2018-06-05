@@ -1,0 +1,130 @@
+{% extends "/admin/layout.html" %}
+
+{% block content %}
+<main class="mdl-layout__content">
+    <div class="page-content">
+        <div class="container">
+            <!-- Your content goes here -->
+            <br /><br /><br /><br />
+            <form action="/cotizacionpreview" method="post" enctype="application/json" role="form">
+                <div class="form-group">
+                    <label for="distribuidor">Distribuidor</label>
+                    <input class="form-control" type="text" placeholder="Distribuidor"  name="distribuidor"/>
+                </div>
+                <div class="form-group">
+                    <label for="solicitante">Solicitante</label>
+                    <input class="form-control" type="text" placeholder="Solicitante"  name="solicitante"/>
+                </div>
+                <div class="form-group">
+                    <label for="tel">Telefono</label>
+                    <input class="form-control" type="tel" placeholder="Telefono" name="tel" />
+                </div>
+                <div class="form-group">
+                    <label for="mail">Email</label>
+                    <input class="form-control" type="email" placeholder="Email" name="mail"/>
+                </div>
+                <div class="form-group">
+                    <label for="folio">Folio</label>
+                    <input class="form-control" type="text" placeholder="Folio" name="folio" />
+                </div><br /><br />
+                <div class="table-responsive" >
+                    <table id="example"  cellspacing="0" class="display">
+                        <thead>
+                            <tr>
+                                <th>Articulo</th>
+                                <th>Servicio</th>
+                                <th>Descripci&oacute;n</th>
+                                <th>Alcance</th>
+                                <th>Precio</th>
+                                <th>Agregar</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Articulo</th>
+                                <th>Servicio</th>
+                               
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            {% for x in serv:%}
+                            <tr>
+                                <td>{{x[0]}}</td>
+                                <td>{{x[4]}}</td>
+                                <td>{{x[2]}}</td>
+                                <td>{{x[3]}}</td>
+                                <td>{{x[15]}}</td>
+                                <td><button class="btn btn-danger glyphicon glyphicon-plus edit" type="button" ></button></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                   
+                </div>
+                <div style="margin-bottom:300px;">
+                    <button class="btn btn-primary glyphicon glyphicon-eye-open vista" type="submit" style="text-align:right;display:block;">Vista previa</button>
+                </div>      
+            </form>
+        </div>
+
+        <!--Aqui comienza footer-->
+       
+</main>
+</div>
+
+{% endblock %}
+
+
+    {% block scripts %}
+
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('#example').DataTable({
+        "paging":   false,
+        "ordering": false,
+        "info":     false
+    });
+} );
+</script>
+<script >
+    $(document).ready(function () {
+        var cart = [];
+        var obj = [];
+        $('.edit').on("click", function () {
+            var selec = $(this).closest('tr').find('td').text();
+                cart.push(selec);
+                //if (selec != ''){
+                  //  console.log('si se agrego')
+                //}
+ 
+        });
+
+        $(".vista").on("click", function () {
+            //alert(obj);
+           alert(JSON.stringify(cart));
+            $.ajax({
+            url: "/cotizacionpreview",
+            type: "POST",
+            contentType: 'application/json;charset=UTF-8',
+            data: JSON.stringify(cart),
+            success: function(response){
+            alert(response.status);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+            });
+        });
+        
+
+    });
+
+</script>
+{% endblock %}
+<!--<script src="/static/scripts/bootstrap.js"></script>
+
+<script src="/static/scripts/dashboard.js"></script>
+<script src="/static/scripts/jquery-1.10.2.js"></script>-->
+<!---->
+</body>
+</html>

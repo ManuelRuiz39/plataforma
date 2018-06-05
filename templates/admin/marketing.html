@@ -1,0 +1,255 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <!-- Latest compiled and minified CSS -->
+    <!-- Material Design Lite -->
+    <link rel="shortcut icon" type="image/png" href="https://scontent.fgdl3-1.fna.fbcdn.net/v/t1.0-1/p50x50/12734268_1063128193753865_1013925773745150687_n.png?oh=f38f57707ea2d7346a7f951b96bbac65&oe=5AD08BC7" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/content/compusoluciones.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+</head>
+
+<body>
+    <!-- Simple header with scrollable tabs. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+
+
+            <!-- Tabs -->
+            <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+                <a href="#scroll-tab-1" class="mdl-layout__tab is-active">Generar encuesta</a>
+                <a href="#scroll-tab-2" class="mdl-layout__tab">Ver resultados</a>
+                <a href="#scroll-tab-5" class="mdl-layout__tab">Enviar encuestas</a>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Menu</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="{{url_for('admin')}}">Home</a>
+                <a class="mdl-navigation__link" href="{{url_for('serviciosAdm')}}">Servicios</a>
+                <a class="mdl-navigation__link" href="{{url_for('cotizador')}}">Cotizador</a>
+                <a class="mdl-navigation__link" href="{{url_for('contratosAdm')}}">Contratos</a>
+                <a class="mdl-navigation__link" href="{{url_for('configuracionAdm')}}">Configuracion</a>
+                <a class="mdl-navigation__link" href="{{url_for('registra')}}">Registrar usuarios</a>
+                <a class="mdl-navigation__link" href="{{url_for('supervisa')}}">Supervisar Bot</a>
+                <a class="mdl-navigation__link" href="{{url_for('asociados')}}">Asociados</a>
+                <a class="mdl-navigation__link" href="{{url_for('proveedores')}}">Proveedores</a>
+                <a class="mdl-navigation__link" href="{{url_for('marketing')}}">Encuestas</a>
+                <a class="mdl-navigation__link" href="skype:maniz39@hotmail.com?chat">Contactar al administrador<span class="glyphicon glyphicon-sunglasses"></spanclass="glyphicon></a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <section class="mdl-layout__tab-panel is-active" id="scroll-tab-1">
+                <div class="page-content">
+                    <!-- Your content goes here -->
+                    <div class="container">
+                        <form action="" method="post" style="margin-top:20px;">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Nombre de encuesta</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Nombre de encuesta">
+                            </div>
+                            <table id="tabla">
+                                <thead>
+                                    <th>Pregunta</th>
+                                    <th>Tipo de respuesta</th>
+                                    <th>Numero de respuestas</th>
+                                    <th>Otros</th>
+                                </thead>
+                                <tbody >
+                                    <tr>
+                                        <td><input type="text" placeholder="Pregunta" class="form-control" name="pregunta" /></td>
+                                        <td>
+                                            <select class="form-control respuesta" name="answer">
+                                                <option value="default">Selecciona el tipo de respuesta</option>
+                                                <option value="corta">Respuesta corta</option>
+                                                <option value="parrafo">Parrafo</option>
+                                                <option value="desplegable">Desplegable</option>
+                                                <option value="casilla">Casilla</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select class="form-control campos" style="display:none;" name="nanswer">
+                                                <option value="default">Selecciona el numero de respuesta</option>
+                                                {%for x in range(1,7):%}
+                                                <option value="{{x}}">{{x}}</option>
+                                                {%endfor%}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select class="form-control otro" style="display:none" name="otro">
+                                                <option value="default">Seleccione la opcion</option>
+                                                <option value="si">Si</option>
+                                                <option value="no">No</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <div class="">
+                                <button class="btn btn-danger glyphicon glyphicon-plus add" type="button"></button>
+                                <button class="btn btn-success glyphicon glyphicon-floppy-disk" type="button" ></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <section class="mdl-layout__tab-panel" id="scroll-tab-2">
+                <div class="page-content">
+                    <div class="container">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <th>Campaña</th>
+                                    <th>Link</th>
+                                    <th>Fecha de lanzamiento</th>
+                                    <th>Fecha de creaci&oacute;n</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Prueba</td>
+                                        <td>http://plataformaSOM:5000/prueba</td>
+                                        <td>{{tiempo}}</td>
+                                        <td>{{tiempo}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+   
+           
+            <section class="mdl-layout__tab-panel" id="scroll-tab-5">
+                <div class="page-content">
+                    <div class="container"><br />
+                        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                            <thead>
+                                <tr>
+                                    <th class="mdl-data-table__cell--non-numeric">Selecciona</th>
+                                    <th>Nombre</th>
+                                    <th>Empresa</th>
+                                    <th>Correo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td ><input type="checkbox" name="encuesta" /></td>
+                                    <td><input type="text" name="encuesta"  disabled/></td>
+                                    <td><input type="text" name="encuesta" disabled/></td>
+                                    <td><input type="email" name="encuesta" disabled/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+    </div>
+
+    {% block scripts %}
+    <script>
+        $(document).ready(function () {
+            var incre = 0;
+            var nom = 'campos';
+            $(".add").on("click", function () {
+                $clone = $("table tbody tr:first").clone();
+                $clone.find("input").each(function () {
+                    $(this).val(" ");
+                    incre = incre + 1;
+                    $(this).attr('name', $(this).attr('name') + incre);
+                    //$(this).attr("name", pops.concat(armando)
+                });
+                //$('#campos').hide();
+                $("table tbody").append($clone);
+
+            });
+            $('.respuesta').on('change', function () {
+                var opt = $(this).val();
+                $('.campos').hide();
+                if (opt == "default") {
+                    $('.campos').hide();
+                    $('.otro').hide();
+                }
+                if (opt == "corta") {
+                    //$('#tabla').append('<tr><td><input type="text" name="" class="form-control"></td></tr>');
+                    $('.campos').hide();
+                    $('.otro').hide();
+                }
+                if (opt == "parrafo") {
+                    $('.campos').hide();
+                    $('.otro').hide();
+                }
+                if (opt == "desplegable") {
+                    $('.campos').show();
+                    $('.otro').show();
+                    if ($('.campos').on('change', function () {
+                        if ($('.campos').val() == '1') {
+                            $('#tabla').append('<tr><td><input type="text" name="" class="form-control"></td></tr>');
+                        }
+                        if ($('.campos').val() == '2') {
+                            $('#tabla').append('<tr><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td></tr>');
+                        }
+                        if ($('.campos').val() == '3') {
+                            $('#tabla').append('<tr><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td></tr>');
+                        }
+                        if ($('.campos').val() == '4') {
+                            $('#tabla').append('<tr><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td></tr>');
+                        }
+                        if ($('.campos').val() == '5') {
+                            $('#tabla').append('<tr><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td></tr>');
+                        }
+                        if ($('.campos').val() == '6') {
+                            $('#tabla').append('<tr><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td></tr>');
+                        }
+                    }));
+
+                }
+                if (opt == "casilla") {
+                    $('.campos').show();
+                    $('.otro').show();
+                    if ($('.campos').val() == '1') {
+                        $('#tabla').append('<tr><td><input type="text" name="" class="form-control"></td></tr>');
+                    }
+                    if ($('.campos').val() == '2') {
+                        $('#tabla').append('<tr><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td></tr>');
+                    }
+                    if ($('.campos').val() == '3') {
+                        $('#tabla').append('<tr><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td></tr>');
+                    }
+                    if ($('.campos').val() == '4') {
+                        $('#tabla').append('<tr><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td></tr>');
+                    }
+                    if ($('.campos').val() == '5') {
+                        $('#tabla').append('<tr><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td></tr>');
+                    }
+                    if ($('.campos').val() == '6') {
+                        $('#tabla').append('<tr><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td><td><input type="text" name="" class="form-control"></td></tr>');
+                    }
+                }
+            });
+        });
+    </script>
+ 
+
+    <script src="/static/scripts/jquery-1.10.2.min.js"></script>
+    <script src="/static/scripts/bootstrap.min.js"></script>
+    <script src="/static/scripts/respond.min.js"></script>
+    {% endblock %}
+
+</body>
+</html>

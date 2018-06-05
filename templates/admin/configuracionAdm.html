@@ -1,0 +1,69 @@
+{% extends "/admin/layout.html" %}
+
+{% block content %}
+<main class="mdl-layout__content">
+    <div class="page-content">
+        <div class="container">
+            <div class="table-responsive" style="margin-bottom:200px;margin-top:100px;">
+                <form action="/eliminaU" method="post">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Compa&ntilde;ia</th>
+                            <th>Email</th>
+                            <th>Puesto</th>
+                            <th>Usuario</th>
+                            <th>Password</th>
+                            <th>Foto</th>
+                            <th>Tipo</th>
+                            <th>Habilita</th>
+                            <th>Modificar</th>
+                            <th>Eliminar</th>
+
+                        </tr>
+                        {%for x in serv:%}
+                        <tr style="text-align:center">
+                            <td><input type="text" disabled value="{{x[0]}}"></td>
+                            <td><input type="text" disabled value="{{x[1]}}" id="h8"></td>
+                            <td><input type="text" disabled value="{{x[2]}}" id="h7"></td>
+                            <td><input type="text" disabled value="{{x[3]}}" id="h6"></td>
+                            <td><input type="text" disabled value="{{x[4]}}" id="h5"></td>
+                            <td><input type="text" disabled value="{{x[5]}}" id="h4"></td>
+                            <td><input type="text" disabled value="{{x[6]}}" id="h3"></td>
+                            <td><input type="text" disabled value="{{x[7]}}" id="h2"></td>
+                            <td><input type="text" disabled value="{{x[8]}}" ></td>
+                            <td><input type="text" disabled value="{{x[10]}}" id="h1"></td>
+                            <td><button class="btn btn-primary glyphicon glyphicon-pencil button-edit" type="button" ></button></td>
+                            <td><button class="btn btn-success glyphicon glyphicon-pencil" type="submit"  value="{{x[0]}}" name="elimina"></button></td>
+                            <td><button class="btn btn-danger glyphicon glyphicon-trash" type="submit" value="{{x[0]}}" name="cuenta"></button></td>
+                        </tr>
+                        {%endfor%}
+                    </table>
+                    {{mail}}
+                </form>
+            </div>
+        </div>
+        <!--Aqui comienza footer-->
+       
+</main>
+   </div>
+
+
+{% endblock %}
+
+    {% block scripts %}
+<script type="text/javascript">
+    $(".button-edit").on("click", function () {
+        $(this).closest('tr').find('input,button').prop('disabled', false);
+
+    });
+</script>
+<script src="/static/scripts/respond.js"></script>
+{% endblock %}
+<!--<script src="/static/scripts/bootstrap.js"></script>
+
+<script src="/static/scripts/dashboard.js"></script>
+<script src="/static/scripts/jquery-1.10.2.js"></script>-->
+<!---->

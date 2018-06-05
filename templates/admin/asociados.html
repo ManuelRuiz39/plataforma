@@ -1,0 +1,64 @@
+{% extends "/admin/layout.html" %}
+
+{% block content %}
+<main class="mdl-layout__content">
+    <div class="page-content">
+        <div class="container">
+            <br />
+            <br />
+            <br />
+            <br />
+            <table class="table table-bordered">
+               <tr>
+                   <th>N°</th>
+                   <th>Asociado</th>
+                   <th>Compras</th>
+                   <th>Segmento</th>
+                   <th>Trabajo</th>
+                   <th>Proyectos</th>
+                   <th>Capacidades para complementar</th>
+                   
+               </tr>
+
+                {%for y in query:%}
+                <tr>
+                    <td>{{y[0]}}</td>
+                    <td>{{y[1]}}</td>
+                    <td>{{y[2]}}</td>
+                    <td>{{y[3]}}</td>
+                    <td>{{y[4]}}</td>
+                    <td>{{y[5]}}</td>
+                    <td>{{y[6]}}</td>
+                </tr>
+                {%endfor%}
+            </table>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+
+        </div>
+        <!--Aqui comienza footer-->
+       
+</main>
+   </div>
+
+
+{% endblock %}
+
+    {% block scripts %}
+<script type="text/javascript">
+     $(document).ready(function () {
+         $('#myTable').DataTable();
+     });</script>
+
+<script src="/static/scripts/respond.js"></script>
+{% endblock %}
+<!--<script src="/static/scripts/bootstrap.js"></script>
+
+<script src="/static/scripts/dashboard.js"></script>
+<script src="/static/scripts/jquery-1.10.2.js"></script>-->
+<!---->
