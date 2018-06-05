@@ -1,6 +1,7 @@
 Flask==0.12.1
 chatterbot
-mysqlclient
+pip==10.0.1
+wheel
 flask-sqlalchemy
 Flask-Mail
 
